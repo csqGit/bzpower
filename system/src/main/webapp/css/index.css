@@ -1,0 +1,177 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+#container{
+	width: 1366px;
+	height: 100%;
+	margin: 0 auto;
+}
+body{
+	background: rgb(0,60,133);
+}
+.top{
+	width: 1366px;
+	height: 107px;
+}
+.top_title{
+	width: 500px;
+	font-size: 25px;
+	margin-left: 50px;
+	height: 60px;
+	line-height: 65px;
+	color: white;
+	float: left;
+}
+.top_user{
+	width: auto;
+	height: 60px;
+	padding: 0 10px;
+	line-height: 75px;
+	color: white;
+	float: right;
+}
+.img{
+	width: 50px;
+	height: 50px;
+	margin-top: 20px;
+	float: right;
+}
+.top_logout{
+	float: right;
+	width: 100px;
+	height: 30px;
+	margin-top: 20px;
+	margin-right: 50px;
+	background: rgb(0, 13, 48);
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid rgb(0, 13, 48);
+	border-radius: 20px;
+}
+.top_logout a:link{
+	color: rgb(249, 182, 82);
+	text-decoration: none;
+}
+.top_logout a:visited{
+	color: rgb(249, 182, 82);
+	text-decoration: none;
+}
+.top_logout a:hover{
+	color: rgb(249, 182, 82);
+}
+.nav{
+	width: 100%;
+	height: 44px;
+	background: url(../images/head2.png) ;
+}
+.nav ul{
+	position: relative;
+	left: 15%;
+	float: left;
+}
+.nav ul li{
+	width: 115px;
+	height: 42px;
+	list-style-type: none;
+	background : url("../images/li.png") no-repeat -2px 2px;
+	line-height: 45px;
+	font-size: 14px;
+	text-align: center;
+	float: left;
+}
+.nav ul li:hover{
+	cursor: pointer;
+	background: rgb(79, 231, 254);
+}
+
+.nav_count{
+	width: 250px;
+	height: 42px;
+	margin-top: -9px;
+	line-height: 45px;
+	margin-right: 20px;
+	color: white;
+	float: right;
+}
+.ul a:link{
+	display: block;
+	width: 115px;
+	height: 40px;
+	margin-top: 1px;
+	text-decoration: none;
+	color: white;
+}
+.ul a:visited{
+	direction: none;
+	color: white;
+}
+.ul a:hover{
+	background: rgb(79, 231, 254);
+	color: black;
+	text-decoration: none;
+}
+
+ul li span{
+	display: block;
+	float: left;
+	width: 35px;
+	height: 20px;
+	margin-top: 10px;
+}
+ul li span img{
+	width: 18px;
+	height: 18px;
+	position: relative;
+	top: -5px;
+	left: 10px;
+	z-index: 1000;
+}
+.buttom{
+	width: 1366px;
+	height: 540px;	
+	margin-top: -2px;
+}
+
+#iframe{
+	width: 1366px;
+	height: 540px;
+}
+
+.nav_ul{
+	width: 115px;
+	height: 200px;
+	display: none;
+}
+.nav ul li ol li{
+	height: 31px;
+	line-height: 30px;
+	color: rgb(0, 60, 233);
+	border-bottom: 1px dashed rgb(249, 193, 122);
+	background: rgb(79,231,254);
+}
+.nav ul li ol li a:link{
+	color: black;
+	height: 30px;
+}
+.nav ul li ol li a:visited{
+	color:rgb(0, 60, 133);
+}
+.nav ul li ol li a:hover{
+	color:rgb(249,193,122);
+	background: rgb(12, 59, 142);
+}
+.nav ul li:hover .nav_ul{
+	display: block;
+}
+.footer{
+	width: 100%;
+	height: 150px;
+	line-height: 150px;
+	text-align: center;
+	color: white;
+	background: rgb(0, 3, 58);
+	margin-top: 10px;
+}
+

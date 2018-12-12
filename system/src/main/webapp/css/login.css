@@ -1,0 +1,86 @@
+@charset "UTF-8";
+* {
+	margin: 0;
+	padding: 0;
+}
+img {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#box {
+	position: absolute;
+	top: 25%;
+	left: 60%;
+	width: 350px;
+	height: 350px;
+	background: url("../images/login_bg3.png") no-repeat;
+	background-size: 100% 100%;
+	z-index: 10000;
+}
+
+p {
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	margin-top: 10px;
+	font-size: 18px;
+}
+
+.div {
+	width: 260px;
+	height: 35px;
+	line-height: 35px;
+	border: 1px solid black;
+	margin: 10px auto;
+	background: white;
+}
+
+.div1 {
+	margin-top: 50px;
+}
+
+.d1 {
+	display: block;
+	width: 60px;
+	height: 25px;
+	line-height: 25px;
+	margin-top: 5px;
+	border-right: 1px solid rgb(2, 12, 48);
+	/*background: url("../images/user2.png") no-repeat 3px 3px;
+	background-size: 20px 20px;*/
+	padding-left: 30px;
+	float: left;
+}
+
+.d2 {
+	display: block;
+	width: 160px;
+	height: 35px;
+	margin-top: -2px;
+	float: left;
+}
+
+input {
+	width: 140px;
+	height: 30px;
+	margin-left: 10px;
+	outline: none;
+	border: none;
+}
+
+.but {
+	position: relative;
+	left: 18%;
+	width: 80px;
+	height: 35px;
+	border: 1px solid red;
+	margin: 0 auto;
+	background: rgb(4, 27, 97);
+	border: 1px solid rgb(4, 27, 97);
+	border-radius: 5px;
+	color: white;
+	cursor: pointer;
+}

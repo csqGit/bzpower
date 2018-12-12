@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.xianbozhan.dao.LineDAO">
+
+	<select id="getLineList" parameterType="java.lang.Integer" resultType="com.system.xianbozhan.entity.Line">
+		select * from line limit #{startPage},#{endPage}
+	</select>
+	
+	<select id="getLineById" parameterType="java.lang.Integer" resultType="com.system.xianbozhan.entity.Line">
+		select * from line where id = #{id}
+	</select>
+	
+	<select id="getLineBylineNameAndOther" parameterType="java.lang.String" resultType="com.system.xianbozhan.entity.Line">
+		select * from line 
+		<where>
+			<if test="companyName != null and companyName != ''">
+				companyName = #{companyName}
+			</if>
+			<if test="lineName != null and lineName != ''">
+				and lineName = #{lineName}
+			</if>
+			<if test="voltageGrade != null and voltageGrade != ''">
+				and voltageGrade = #{voltageGrade}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getCount" resultType="com.system.xianbozhan.entity.Line">
+		select * from line
+	</select>
+	
+	<insert id="addLine" parameterType="com.system.xianbozhan.entity.Line">
+		insert into line values(#{id}, #{lineName}, #{companyName}, ${voltageGrade}, #{beginLine}, #{endLine}, #{towerNumber})
+	</insert>
+	
+	<update id="updateLine" parameterType="com.system.xianbozhan.entity.Line">
+		update line set lineName = #{lineName}, companyName = #{companyName}, voltageGrade = #{voltageGrade}, beginLine = #{beginLine},
+		endLine = #{endLine}, towerNumber = #{towerNumber} where id = #{id}
+	</update>
+	
+	<delete id="deleteLine" parameterType="java.lang.Integer">
+		delete from line where id = #{id}
+	</delete>
+	
+	
+
+
+</mapper>

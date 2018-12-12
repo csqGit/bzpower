@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>西安博展电力通道可视化管理系统</title>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//取出保存在cookie中的用户
+		var name = $.cookie('name');
+		var numCookie = $.cookie('numCookie');
+		var countCookie = $.cookie('countCookie');
+		var lxCookie = $.cookie('lxCookie');
+		$("#userName").html(name);
+		$("#numCookie").html(numCookie);
+		$("#countCookie").html(countCookie);
+		$("#lxCookie").html(lxCookie);
+		
+	})
+</script>
+</head>
+<body>
+<div id="container">
+<div class="top">
+	<div style="width: 1366px; height: 60px;">
+		<div class="top_title">通道可视化管理系统</div>
+		<div class="top_logout"><a id="logout" href="logOut">退出登录</a></div>
+		<div class="top_user">当前用户： <span id="userName"></span></div>
+		<div class="img"><img alt="" src="images/user.png"></div>
+	</div>
+	
+	<div class="nav">
+		<ul style="width: 1000px;" class="ul"> 
+			<li>
+			<span>
+				<img class="cg" alt="" src="images/passageway.png">
+			</span>
+				<a href="index.html">&nbsp;通道可视化&nbsp;</a>
+					<ol class="nav_ul u2" style="position:relative; top:0px; left: 0px;">
+						<li class="l2" style="border-top: 1px dashed rgb(249, 193, 122);"><a href="#">全部轮播</a></li>
+						<li class="l2"><a href="#">线路轮播</a></li>
+						<li class="l2"><a href="#">分组轮播</a></li>
+						<li class="l2"><a href="#">预警轮播</a></li>
+					</ol>
+			<li>
+				<span>
+				<img class="cg" alt="" src="images/carousel.png">
+			</span>
+				<a href="#">&nbsp;图片展示&nbsp;</a>
+					<ol class="nav_ul u2" style="position:relative; top:0px; left: 0px;">
+						<li class="l2" style="border-top: 1px dashed rgb(249, 193, 122);"><a href="#">全部轮播</a></li>
+						<li class="l2"><a href="#">线路轮播</a></li>
+						<li class="l2"><a href="#">分组轮播</a></li>
+						<li class="l2"><a href="#">预警轮播</a></li>
+					</ol>
+				</li>
+			<li>
+			<span>
+				<img class="cg" alt="" src="images/statistics.png">
+			</span>
+			<a href="#">&nbsp;查询统计&nbsp;</a>
+				<ol class="nav_ul u2" style="position:relative; top:0px; left: 0px;">
+						<li class="l2" style="border-top: 1px dashed rgb(249, 193, 122);"><a href="#">全部轮播</a></li>
+						<li class="l2"><a href="#">线路轮播</a></li>
+						<li class="l2"><a href="#">分组轮播</a></li>
+						<li class="l2"><a href="#">预警轮播</a></li>
+					</ol>
+			</li>
+			<li>
+				<span>
+				<img class="cg" alt="" src="images/alarm.png">
+			</span>
+			<a href="#">&nbsp;预警分析&nbsp;</a>
+				<ol class="nav_ul u2" style="position:relative; top:0px; left: 0px;">
+						<li class="l2" style="border-top: 1px dashed rgb(249, 193, 122);"><a href="#">全部轮播</a></li>
+						<li class="l2"><a href="#">线路轮播</a></li>
+						<li class="l2"><a href="#">分组轮播</a></li>
+						<li class="l2"><a href="#">预警轮播</a></li>
+					</ol>
+			</li>
+			<li>
+				<span>
+				<img class="cg" alt="" src="images/hiddendanger.png">
+			</span>
+				<a href="#">&nbsp;告警查询&nbsp;</a>
+				<ol class="nav_ul u2" style="position:relative; top:0px; left: 0px;">
+						<li class="l2" style="border-top: 1px dashed rgb(249, 193, 122);"><a href="#">全部轮播</a></li>
+						<li class="l2"><a href="#">线路轮播</a></li>
+						<li class="l2"><a href="#">分组轮播</a></li>
+						<li class="l2"><a href="#">预警轮播</a></li>
+					</ol>	
+			</li>
+			<li>
+				<span>
+				<img class="cg" alt="" src="images/hiddendanger.png">
+			</span>
+				<a href="#">&nbsp;系统设置&nbsp;</a>
+				<ol class="nav_ul u2" style="position:relative; top:0px; left: 0px;">
+						<li class="l2" style="border-top: 1px dashed rgb(249, 193, 122);"><a href="#">全部轮播</a></li>
+						<li class="l2"><a href="#">角色管理</a></li>
+						<li class="l2"><a href="view/user.html" target="iframe">用户管理</a></li>
+						<li class="l2"><a href="view/line_management.html" target="iframe">线路管理</a></li>
+						<li class="l2"><a href="view/tower_management.html"  target="iframe">杆塔管理</a></li>
+						<li class="l2"><a href="#">设备管理</a></li>
+						<li class="l2"><a href="#">微信管理</a></li>
+						<li class="l2"><a href="#">部门管理</a></li>
+					</ol>	
+			</li>
+			<!-- <li style="width:0px"></li> -->
+		</ul>
+		<div class="nav_count">总计：<span id="numCookie"></span>&nbsp;&nbsp;  在线：<span id="countCookie"></span>&nbsp;&nbsp; 离线： <span id="lxCookie"></span></div>
+	</div>
+</div>
+
+<div class="buttom">
+	<iframe id="iframe" name="iframe" src="view/view.html" scrolling="no" marginwidth="0" marginheight="0" frameborder='no' border='0' >
+		
+	</iframe>
+</div>
+</div>
+<!-- <div class="footer">
+	<p>@ copy ©2018  版权归西安博展电力有限公司所有</p>
+</div> -->
+</body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.xianbozhan.dao.UserDAO">
+
+	<resultMap type="com.system.xianbozhan.entity.User"
+		id="userMap">
+		<id column="id" property="id" />
+		<result column="company" property="company" />
+		<result column="username" property="username" />
+		<result column="name" property="name" />
+		<result column="password" property="password" />
+		<result column="phone" property="phone" />
+		<result column="weChat" property="weChat" />
+		<result column="weChatName" property="weChatName" />
+		<result column="enterpriseNumber" property="enterpriseNumber" />
+		<association property="department" column="department"
+			javaType="com.system.xianbozhan.entity.Department">
+			<id column="id" property="id" />
+			<result column="departmentName" property="departmentName" />
+		</association>
+		<association property="role" column="role"
+			javaType="com.system.xianbozhan.entity.Role">
+			<id column="id" property="id" />
+			<result column="roleName" property="roleName" />
+		</association>
+	</resultMap>
+
+	<select id="getUserList" resultMap="userMap">
+		select u.id, u.company,
+		d.departmentName, r.roleName, u.username,
+		u.name,u.password, u.phone,
+		u.weChat, u.weChatName, u.enterpriseNumber,r.jurisdiction from user u,
+		role r,
+		department d where
+		u.department = d.id and u.role = r.id limit
+		#{param1},#{param2}
+	</select>
+
+	<select id="getUserByUsername" parameterType="java.lang.String"
+		resultMap="userMap">
+		select u.id, u.company, d.departmentName, r.roleName,
+		u.username,
+		u.name,u.password, u.phone,
+		u.weChat, u.weChatName,
+		u.enterpriseNumber,r.jurisdiction from user u, role r,
+		department d
+		where
+		u.department = d.id and u.role = r.id and u.username=#{username}
+	</select>
+	
+	<select id="getUserById" parameterType="java.lang.Integer"
+		resultMap="userMap">
+		select u.id, u.company, d.departmentName, r.roleName,
+		u.username,
+		u.name,u.password, u.phone,
+		u.weChat, u.weChatName,
+		u.enterpriseNumber,r.jurisdiction from user u, role r,
+		department d
+		where
+		u.department = d.id and u.role = r.id and u.id = #{id}
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(*) from user
+	</select>
+
+	<insert id="addUser"
+		parameterType="com.system.xianbozhan.entity.User">
+		insert into user(id, company, department, role,
+		username,
+		name,password, phone, weChat,
+		weChatName, enterpriseNumber)
+		values
+		(#{id},#{company},#{department.id},#{role.id},#{username},
+		#{name},#{password},#{phone},#{weChat},
+		#{weChatName},#{enterpriseNumber})
+	</insert>
+
+
+	<update id="updateUser"
+		parameterType="com.system.xianbozhan.entity.User">
+		update user set company = #{company} , department = #{department.id}, role = #{role.id}, username =
+		#{username}, password = #{password}, name = #{name},
+		phone = #{phone}, weChat = #{weChat}, weChatName = #{weChatName}, enterpriseNumber =
+		#{enterpriseNumber} WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteUserByUserName" parameterType="java.lang.String">
+		delete from user where username = #{username}
+	</delete>
+
+<delete id="deleteUserById" parameterType="java.lang.Integer">
+		delete from user where id = #{id}
+	</delete>
+
+
+</mapper>

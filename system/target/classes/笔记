@@ -1,0 +1,67 @@
+mapperLocations的classpath:com/system/xianbozhan/mapper/*.xml"为xml的文件路径
+ 
+ 
+ <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+			<!-- 指定要自动扫描接口的基础包，实现接口 -->
+			<property name="basePackage" value="com.system.xianbozhan.dao" />
+</bean>
+
+basePackage的value为接口的地址。
+
+<mapper namespace="com.system.xianbozhan.dao.UserDAO"> 
+	<select id="getById" parameterType="int" resultType="User">
+		select * from user where id = #{id}
+	</select>
+</mapper>
+namespace的地址为接口的详细名称
+
+namespace 、basePackage为接口的详细名称，mapperLocations为mapper所对应的详细地址。
+
+
+mapper里面，集合的配置需要按照顺序来写，分别是：id,result, assionsition, collection
+
+
+在mybatis的insert语句中，如果有的属性为一个对象，而该属性关联的是对象的id，那么在进行insert语句时，
+对于对象的赋值，应该将对象的id属性取出来赋值给该对象。
+如：<insert id="addUser"
+		parameterType="com.system.xianbozhan.entity.User">
+		insert into user(id, department, role,) values
+		(#{id},#{company},#{department.id},#{role.id})
+	</insert>
+
+	
+mybatis中，当传入的参数复杂时，可以不写parameterType，sql语句中 的参数值可以有两种写法：
+	1、为#{param1}, #{param2}, ... #{paramn}
+	2、在dao接口中给参数设置别名，如：getAdmin(@param("name") String username, @param("pas") String password);
+		mapper配置文件中的sql语句为：select * from admin where username = #{name} and password = #{pas}
+		
+		
+session和cookie的区别：
+1、会话：web应用的一次会话指的是客户端与web服务器之间连续发生的一次请求和响应的过程，例如：某用户在某网站上的整个购物过程就是一次会话。	
+cookie缓存只是浏览器缓存的一部分，cookie是服务器需要让浏览器缓存数据。
+cookie：当用户通过浏览器访问web服务器时，服务器会给客户端发送一些数据，这些数据都保存在cookie中，当浏览器再次访问服务器时，都会在请求头中将cookie发送给服务器，方便服务器做出正确的响应。
+
+服务器向客户端发送cookie时，会在HTTP响应头字段中增加set-cookie响应头字段。
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

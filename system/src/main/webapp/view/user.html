@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户角色管理</title>
+
+<link rel="stylesheet" type="text/css" href="../css/user.css" />
+<link rel="stylesheet" type="text/css"
+	href="../ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../ui/themes/icon.css">
+<script type="text/javascript" src="../ui/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../js/user.js"></script>
+<style type="text/css">
+	#tab tr{
+		border-bottom: 1px;
+	}
+</style>
+
+</head>
+<body>
+	<div id="container">
+		<div class="left" style="width: 100%; border: 1px;">
+			<div class="left_top">
+				<span>用户管理-用户信息</span>
+				<div class="left_earch">
+					用户名：<input id="username" type="text" name="username"> <input
+						id="but" class="myBut" type="button" value="查询">
+				</div>
+			</div>
+			<div class="left_bottom">
+				<table id="tab" border="1"  cellspacing="0" cellpadding="0">
+					<thead>
+						<tr id="bg"
+							style="color: rgb(79, 231, 254); background: url(../images/headPG.png); height: 40px;">
+							<td>编号</td>
+							<td>公司</td>
+							<td>部门</td>
+							<td>角色</td>
+							<td>用户名</td>
+							<td>姓名</td>
+							<td>电话</td>
+							<td>微信号</td>
+							<td>微信名称</td>
+							<td>企业编号</td>
+							<td>操作</td>
+						</tr>
+					</thead>
+				</table>
+
+				<div id="page">
+				<span id="count">第<font id="now"></font>至<font id="size"></font>条结果，共计<font
+					id="cou"></font>条结果</span>
+					<div
+						style="width: 1330px; height: 50px; border-bottom: 1px solid rgb(8, 35, 69);">
+						<div id="page_left">
+							<font id="first">首页</font> <font id="prePage">上一页</font> <font
+								id="currentPage">1</font>/<font id="pages">3</font> <font
+								id="nextPage">下一页</font> <font id="lastPage">尾页</font>
+						</div>
+						<div id="page_right">
+							<span id="flush">刷新</span><span id="add">添加</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 创建新窗口 新增用户信息-->
+		<div id="win" class="easyui-window" title="添加用户信息"
+			style="width: 330px; height: 470px"
+			data-options="iconCls:'icon-save',modal:false, closed:true,closable:true">
+			<form id="addForm" action="" method="post">
+				<div id="box" style="margin: 0 auto;">
+					<input type="hidden" name="id">
+					<table id="box_tab">
+						<tr>
+							<td>公司</td>
+							<td><input type="text" name="company"></td>
+						</tr>
+						<tr>
+							<td>部门</td>
+							<td>
+								<input id="cc"
+								class="easyui-combobox" name="department.id"
+								data-options="valueField:'id',textField:'departmentName',url:'../getDepartmentName'" />
+							</td>
+						</tr>
+						<tr>
+							<td>角色</td>
+							<td>
+								<!-- <input type="text" name="role.id"> --> <input id="cc"
+								class="easyui-combobox" name="role.id"
+								data-options="valueField:'id',textField:'roleName',url:'../getRoleName'" />
+							</td>
+						</tr>
+						<tr>
+							<td>用户名</td>
+							<td><input type="text" name="username"></td>
+						</tr>
+						<tr>
+							<td>密码</td>
+							<td><input type="password" name="password"></td>
+						</tr>
+						<tr>
+							<td>姓名</td>
+							<td><input type="text" name="name" id="name"></td>
+						</tr>
+						<tr>
+							<td>电话</td>
+							<td><input type="text" name="phone"></td>
+						</tr>
+						<tr>
+							<td>微信号</td>
+							<td><input type="text" name="weChat"></td>
+						</tr>
+						<tr>
+							<td>微信名称</td>
+							<td><input type="text" name="weChatName"></td>
+						</tr>
+						<tr>
+							<td>企业编号</td>
+							<td><input type="text" name="enterpriseNumber"></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input id="myBut"
+								style="cursor: pointer; width: 50px; height: 30px; margin-left: 50px; color: rgb(79, 231, 254)"
+								type="button" value="提交">&nbsp;&nbsp;&nbsp;&nbsp; <input
+								id="closed"
+								style="cursor: pointer; width: 50px; height: 30px; color: rgb(79, 231, 254)"
+								type="button" value="取消"></td>
+						</tr>
+					</table>
+				</div>
+				<span id="msg" style="margin-left: 50px; color: red;"></span>
+			</form>
+		</div>
+
+		<!-- <div class="right" style="margin-left: 30px;">
+			<div class="right_top">
+				<span>用户管理-用户信息</span>
+			</div>
+			<div class="right_bottom">
+
+				<span id="count" style="width: 480px;">第1至12条结果，共计3条结果</span>
+				<div id="page">
+					<div
+						style="width: 500px; height: 50px; border-bottom: 1px solid rgb(8, 35, 69);">
+						<div id="page_left">
+							<font>首页</font> <font>上一页</font> <font>1/2</font> <font>下一页</font>
+							<font>尾页</font>
+						</div>
+						<div id="page_right">
+							<span style="float: right; margin-right: 10px;">保存</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		
+		
+		<!-- 修改用户信息 -->
+		<div id="updateWindow" class="easyui-window" title="修改用户信息" style="width:330px;height:470px; background: rgb(0, 13, 48)"   
+        data-options="iconCls:'icon-save',modal:false, closed: true">   
+     		<form id="updateForm" action="" method="post">
+				<div id="box" style="margin: 0 auto;">
+					<input type="hidden" name="id" value=''>
+					<table id="box_tab">
+						<tr>
+							<td>公司</td>
+							<td><input type="text" name="company" value=""></td>
+						</tr>
+						<tr>
+							<td>部门</td>
+							<td>
+								<input id="cc" id="dept2"
+								class="easyui-combobox department" name="department.id" 
+								data-options="valueField:'id',textField:'departmentName',url:'../getDepartmentName'" />
+							</td>
+						</tr>
+						<tr>
+							<td>角色</td>
+							<td>
+								<input id="cc" id="role2"
+								class="easyui-combobox role"  name="role.id"
+								data-options="valueField:'id',textField:'roleName',url:'../getRoleName'"  value=""/>
+							</td>
+						</tr>
+						<tr>
+							<td>用户名</td>
+							<td><input type="text" id="us" name="username" value=""></td>
+						</tr>
+						<tr>
+							<td>密码</td>
+							<td><input type="text" name="password" value=""></td>
+						</tr>
+						<tr>
+							<td>姓名</td>
+							<td><input id="name2" type="text" name="name" id="n" value=""></td>
+						</tr>
+						<tr>
+							<td>电话</td>
+							<td><input type="text" name="phone" value=""></td>
+						</tr>
+						<tr>
+							<td>微信号</td>
+							<td><input type="text" name="weChat" value=""></td>
+						</tr>
+						<tr>
+							<td>微信名称</td>
+							<td><input type="text" name="weChatName" value=""></td>
+						</tr>
+						<tr>
+							<td>企业编号</td>
+							<td><input type="text" name="enterpriseNumber" value=""></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input id="updateBut"
+								style="cursor: pointer; width: 50px; height: 30px; margin-left: 50px; color: rgb(79, 231, 254)"
+								type="button" value="修改">&nbsp;&nbsp;&nbsp;&nbsp; <input
+								id="updateCancle"
+								style="cursor: pointer; width: 50px; height: 30px; color: rgb(79, 231, 254)"
+								type="button" value="取消"></td>
+						</tr>
+					</table>
+				</div>
+				<span class="msg" style="margin-left: 50px; color: red;"></span>
+			</form>
+		</div>  
+
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+[{
+	"id" : 1,
+	"text" : "西安博展供电公司",
+	"children" : [
+		
+		{	
+			"text" : "220kv",
+			"children" :  [
+				{
+					"text" : "<a href='right.html' target='myFrame'>长堡线</a>",
+					"children" : [
+							{
+								"text" : "22号",
+								"checked" : true
+							},
+							{
+								"id" : 1,
+								"text" : "33号"
+							}
+					]
+				}
+			]
+		},
+		{	
+			"text" : "110kv",
+			"state" : "closed",
+			"children" :  [
+				{
+					"text" : "长堡线",
+					"state" : "closed",
+					"children" : [
+							{
+								"text" : "22号",
+								"checked" : true
+							},
+							{
+								"id" : 1,
+								"text" : "33号"
+							}
+					]
+				}
+			]
+			
+			
+			
+		}
+	]
+}
+]

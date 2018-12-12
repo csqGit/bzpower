@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>杆塔管理界面</title>
+
+<link rel="stylesheet" type="text/css" href="../css/line_management.css" />
+<link rel="stylesheet" type="text/css"
+	href="../ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../ui/themes/icon.css">
+<script type="text/javascript" src="../ui/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/tower_management.js"></script>
+
+<style type="text/css">
+.tbody tr:hover{
+	background: rgb(4, 32, 79);
+}
+.tbody tr a:link{
+	text-decoration: none;
+	color:rgb(252, 193, 123);
+}
+.tbody tr a:visited{
+	color:rgb(252, 193, 123);
+}
+.tbody tr a:hover{
+	color: rgb(79, 231, 254)
+}
+#winTab{
+	width: 300px;
+	margin: 10px auto;
+}
+#winTab tr{
+	height: 50px;
+	font-size: 15px;
+	color: rgb(79, 231, 254);
+}
+#winTab tr td{
+	padding-left: 20px;
+}
+#winTab tr td input{
+	height: 30px;
+	background: rgb(6, 47, 103);
+	border: 1px solid rgb(79, 231, 254);
+	border-radius: 3px;
+	color: rgb(79, 231, 254);
+}
+.other{
+	padding-left: 10px;
+}
+#msg{
+	height: 30px;
+	width: 300px;
+	margin: 0 auto;
+	text-align:center;
+	line-height: 30px;
+	margin-top: -10px;
+	color: red;
+	font-size: 14px;
+}
+.sr{
+	position: relative;
+	left: 25%;
+	width: 50px;
+	height: 30px;
+	text-align: center;
+	color: rgb(79, 231, 254);
+	cursor: pointer;
+}
+.window{
+	background: rgb(0, 13, 48);
+}
+.panel-title{
+	color: rgb(79, 231, 254);
+}
+.panel-header, .panel-body{
+	
+}
+.panel-body{
+	background: rgb(0, 60, 133);
+	color: rgb(79, 231, 254);
+}
+
+#lineName{
+	position: relative;
+	top: -50px;
+	left: 85px;
+	width: 146px;
+	height: 30px;
+	border: 1px solid rgb(79, 231, 254);
+	border-radius: 3px;
+	background: rgb(4, 32, 79);
+	color: white;
+}
+
+
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<div id="container">
+		<div id="top">
+
+			<form id="searchForm" action="">
+				<ul id="li">
+					<li>线路名称： <input class="in" type="text" name="line_id.id"
+						value="">
+						<select id="lineName"></select>
+						</li>
+					<li>杆塔名称： <input class="in" type="text" name="towerName"
+						value=""></li>
+					<li>杆塔类型： <input class="in" type="text" name="towerType"
+						value=""></li>
+					<li style="width: 50px;"><input id="sub" type="button"
+						value="查询"></li>
+				</ul>
+			</form>
+			<span id="span2"><a onclick="flush()" href="javascript:void(0)">刷新</a></span> <span
+				id="span2"><a onclick="addTower('addTower')" href="javascript:void(0)">新增</a></span>
+
+		</div>
+		<div id="main">
+			<table id="lineTab" width="98%" border="1" cellspacing="0"
+				cellpadding="0">
+				<thead>
+					<tr
+						style="color: rgb(79, 231, 254); background: url(../images/headPG.png); height: 40px;">
+						<td>编号</td>
+						<td>线路名称</td>
+						<td>杆塔名称</td>
+						<td>杆塔类型</td>
+						<td>杆塔位置</td>
+						<td>安装日期</td>
+						<td>投运日期</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		
+		<!-- 线路添加修改窗口 -->
+		<div id="win" class="easyui-window" title="杆塔信息" style="width:350px;height:450px;border: none;background:rgb(0, 13, 48) "   
+        data-options="iconCls:'icon-save',modal:false, closed: true">   
+	        <form id="lineForm" class='towerForm' action="">
+	        	<input class='other' type="hidden" name="id"/> 
+	        	<table id="winTab">
+	     			<tr><td>线路名称</td>
+	     				<td>
+	     					<input class="other" type="text" name="line_id.id">
+	     				</td>
+	     			</tr>
+	     			<tr><td>杆塔名称</td><td>
+	     				<input class="other" type="text" name="towerName">
+	     			</td></tr>
+	     			<tr><td>杆塔类型</td><td>
+	     				<input class="other" type="text" name="towerType">
+	     			</td></tr>
+	     			<tr><td>杆塔位置</td><td>
+	     				<input class="other" type="text" name="towerAddress">
+	     			</td></tr>
+	     			<tr><td>安装位置</td><td>
+	     				<input class="other" type="text" name="installDate">
+	     			</td></tr>
+	     			<tr><td>投运日期</td><td>
+	     				<input class="other" type="text" name="runDate">
+	     			</td></tr>
+	     			
+	     			<tr>
+	     				<td colspan="2" >
+	     					<input class="sr" id="but" style="text-align: center;" type="button" value="确定">&nbsp;&nbsp;
+	     					<input class="sr" type="reset" value="重置">
+	     				</td>
+	     			</tr>
+	     		</table>
+	     		<div id="msg"></div>
+	        </form>
+     		
+		</div>  
+
+
+		<ul id="ul">
+			<li id="li1"><span id="span1">第<font id="now"></font>至<font
+					id="size"></font>项结果,共计<font id="count"></font>项结果
+			</span></li>
+			<li id="li2"><span><font id="firstPage">首页</font></span> <span><font
+					id="prePage">上一页</font></span> <span><font id="currentPage"></font>/<font
+					id="pages"></font></span> <span><font id="nextPage">下一页</font></span> <span><font
+					id="lastPage">最后一页</font></span></li>
+			<li id="li3"></li>
+		</ul>
+
+	</div>
+</body>
+
+</html>

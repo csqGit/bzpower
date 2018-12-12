@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.xianbozhan.dao.TowerDAO">
+
+	<resultMap type="com.system.xianbozhan.entity.Tower"
+		id="towerMap">
+		<id column="id" property="id" />
+		<result column="towerName" property="towerName" />
+		<result column="towerType" property="towerType" />
+		<result column="towerAddress" property="towerAddress" />
+		<result column="installDate" property="installDate" />
+		<result column="runDate" property="runDate" />
+		<association property="line_id" column="line_id"
+			javaType="com.system.xianbozhan.entity.Line">
+			<id column="id" property="id" />
+			<result column="lineName" property="lineName" />
+			<result column="companyName" property="companyName" />
+			<result column="voltageGrade" property="voltageGrade" />
+			<result column="beginLine" property="beginLine" />
+			<result column="endLine" property="endLine" />
+			<result column="towerNumber" property="towerNumber" />
+		</association>
+	</resultMap>
+
+	<select id="getTowerList" resultMap="towerMap">
+		select t.id, t.towerName,
+		t.towerType, t.towerAddress, t.installDate, t.runDate, l.id,
+		l.lineName, l.companyName, l.voltageGrade,
+		l.beginLine, l.endLine,
+		l.towerNumber from tower t, line l where t.line_id = l.id limit
+		#{startPage}, #{maxPage}
+	</select>
+
+	<select id="getTowerById" parameterType="java.lang.Integer"
+		resultMap="towerMap">
+		select t.id, t.towerName, t.towerType, t.towerAddress, t.installDate,
+		t.runDate,
+		l.id, l.lineName, l.companyName, l.voltageGrade, l.beginLine, l.endLine,
+		l.towerNumber from tower t, line l where t.line_id = l.id and t.id =
+		#{id}
+	</select>
+	
+	<select id="getTowerByTowerAndOther" resultMap="towerMap">
+		select t.id, t.towerName,
+		t.towerType, t.towerAddress, t.installDate, t.runDate, l.id,
+		l.lineName, l.companyName, l.voltageGrade,
+		l.beginLine, l.endLine,
+		l.towerNumber from tower t, line l where t.line_id = l.id 
+		
+			<if test="lineName != '' and lineName != null">
+				and lineName = #{lineName.id}
+			</if>
+			<if test="towerName != '' and towerName != null">
+				and towerName = #{towerName}
+			</if>
+			<if test="towerType != '' and towerType != null">
+				and towerType = #{towerType}
+			</if>
+	</select>
+
+	<select id="getCount" resultMap="towerMap">
+		select * from tower
+	</select>
+
+	<insert id="addTower"
+		parameterType="com.system.xianbozhan.entity.Tower">
+		insert into tower(towerName, towerType, towerAddress, installDate,
+		runDate,line_id) values ( #{towerName}, #{towerType}, #{towerAddress},
+		#{installDate},#{runDate}, #{line_id.id})
+	</insert>
+
+	<update id="updateTower"
+		parameterType="com.system.xianbozhan.entity.Tower">
+		update tower set towerName = #{towerName}, towerType = #{towerType},
+		towerAddress
+		= #{towerAddress}, installDate = #{installDate}, runDate = #{runDate},
+		line_id
+		= #{line_id.id} where id = #{id}
+	</update>
+
+	<delete id="deleteTower" parameterType="java.lang.Integer">
+		delete from tower where id = #{id}
+	</delete>
+
+
+
+
+</mapper>
