@@ -12,7 +12,7 @@ public interface TowerDAO {
 	
 	public Tower getTowerById(int id);
 	
-	public List<Tower> getTowerByTowerAndOther(@Param("lineName") int lineName, 
+	public List<Tower> getTowerByTowerAndOther(@Param("lineId") int lineId, 
 			@Param("towerName") String towerName, @Param("towerType") String towerType);
 	 
 	public void addTower(Tower tower);

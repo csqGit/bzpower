@@ -4,45 +4,45 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.system.xianbozhan.entity.Device;
 import com.system.xianbozhan.entity.Line;
-import com.system.xianbozhan.entity.LineName;
 
-public interface LineDAO {
+public interface DeviceDAO {
 	/*
 	 * 查询全部线路信息
 	 */
-	public List<Line> getLineList(@Param("startPage") int startPage, @Param("endPage") int endPage);
+	public List<Device> getDeviceList(@Param("startPage") int startPage, @Param("maxPage") int maxPage);
 	
 	/*
 	 * 查询线路名称
 	 */
-	public List<LineName> getLineName();
+	
 	
 	/*
 	 * 根据id查询线路信息
 	 */
-	public Line getLineById(int id);
+	public Line getDeviceById(int id);
 	
 	/*
 	 * 根据公司名称，线路名称，电压等级查询线路信息
 	 */
-	public List<Line> getLineBylineNameAndOther(@Param("companyName")String companyName, 
-			@Param("lineName")String lineName, @Param("voltageGrade") String voltageGrade);
+	public List<Line> getDeviceByDeviceNumberAndOther(@Param("lineName")String lineName, 
+			@Param("towerName")String towerName, @Param("deviceNumber") String deviceNumber);
 	
-	/*
+	/*961386256
 	 * 添加线路信息
 	 */
-	public void addLine(Line line);
+	public void addDevice(Device device);
 	
 	/*
 	 * 修改线路信息
 	 */
-	public void updateLine(Line line);
+	public void updateDevice(Device device);
 	
 	/*
 	 * 删除线路信息根据id
 	 */
-	public void deleteLine(int id);
+	public void deleteDevice(int id);
 	
 	/*
 	 * 得到线路的全部数量

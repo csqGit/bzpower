@@ -52,9 +52,9 @@ public class TowerServiceImpl implements TowerService{
 		return page;
 	}
 
-	public List<Tower> getTowerByTowerAndOther(int lineName, String towerName, String towerType) {
+	public List<Tower> getTowerByTowerAndOther(int lineId, String towerName, String towerType) {
 		// TODO Auto-generated method stub
-		return towerDAO.getTowerByTowerAndOther(lineName, towerName, towerType);
+		return towerDAO.getTowerByTowerAndOther(lineId, towerName, towerType);
 	}
 	
 

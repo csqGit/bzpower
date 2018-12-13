@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.xianbozhan.dao.DeviceDAO">
+
+	<resultMap type="com.system.xianbozhan.entity.Device"
+		id="deviceMap">
+		<id column="id" property="id" />
+		<result column="phoneNumber" property="phoneNumber" />
+		<result column="deviceNumber" property="deviceNumber" />
+		<result column="model" property="model" />
+		<result column="manufacturer" property="manufacturer" />
+		<result column="installDate" property="installDate" />
+		<result column="viewAddress" property="viewAddress" />
+		<result column="installPerson" property="installPerson" />
+		<result column="dangerType" property="dangerType" />
+		<result column="runType" property="runType" />
+		<result column="description" property="description" />
+		<association property="line" column="line"
+			javaType="com.system.xianbozhan.entity.Line">
+			<id column="id" property="id" />
+			<result column="lineName" property="lineName" />
+			<result column="companyName" property="companyName" />
+			<result column="voltageGrade" property="voltageGrade" />
+			<result column="beginLine" property="beginLine" />
+			<result column="endLine" property="endLine" />
+			<result column="towerNumber" property="towerNumber" />
+		</association>
+		<association property="tower" column="tower"
+			javaType="com.system.xianbozhan.entity.Tower">
+			<id column="id" property="id" />
+			<result column="towerName" property="towerName" />
+			<result column="towerType" property="towerType" />
+			<result column="towerAddress" property="towerAddress" />
+			<result column="installDate" property="installDate" />
+			<result column="runDate" property="runDate" />
+		</association>
+	</resultMap>
+
+	<select id="getDeviceList" parameterType="java.lang.Integer"
+		resultMap="deviceMap">
+		select d.id, d.phoneNumber, d.deviceNumber, d.model,
+		d.manufacturer, d.installDate, d.viewAddress, d.installPerson,
+		d.dangerType, d.runType, d.description, l.lineName, t.towerName from
+		device d, line l, tower t where d.line = l.id and
+		d.tower = t.id limit #{startPage}, #{maxPage}
+	</select>
+
+
+
+
+
+
+</mapper>

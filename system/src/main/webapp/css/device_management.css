@@ -1,0 +1,95 @@
+@charset "UTF-8";
+#container {
+	width: 100%;
+}
+
+.tbody tr:hover {
+	background: rgb(4, 32, 79);
+}
+
+.tbody tr a:link {
+	text-decoration: none;
+	color: rgb(252, 193, 123);
+}
+
+.tbody tr a:visited {
+	color: rgb(252, 193, 123);
+}
+
+.tbody tr a:hover {
+	color: rgb(79, 231, 254)
+}
+
+#winTab {
+	width: 300px;
+	margin: 10px auto;
+}
+
+#winTab tr {
+	height: 50px;
+	font-size: 15px;
+	color: rgb(79, 231, 254);
+}
+
+#winTab tr td {
+	padding-left: 20px;
+}
+
+#winTab tr td input {
+	height: 30px;
+	background: rgb(6, 47, 103);
+	border: 1px solid rgb(79, 231, 254);
+	border-radius: 3px;
+	color: rgb(79, 231, 254);
+}
+
+.other {
+	padding-left: 10px;
+}
+
+#msg {
+	height: 30px;
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 30px;
+	margin-top: -10px;
+	color: red;
+	font-size: 14px;
+}
+
+.sr {
+	position: relative;
+	left: 25%;
+	width: 50px;
+	height: 30px;
+	text-align: center;
+	color: rgb(79, 231, 254);
+	cursor: pointer;
+}
+
+.window {
+	background: rgb(0, 13, 48);
+}
+
+.panel-title {
+	color: rgb(79, 231, 254);
+}
+
+.panel-header, .panel-body {
+	
+}
+
+.panel-body {
+	background: rgb(0, 60, 133);
+	color: rgb(79, 231, 254);
+}
+
+#deviceTab{
+	text-align: center;
+}
+.tbody{
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+}

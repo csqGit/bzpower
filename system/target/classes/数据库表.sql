@@ -38,3 +38,23 @@ create table tower(
 	line_id int ,
 	FOREIGN KEY (line_id) REFERENCES line(id)
 )
+
+
+-- 设备信息表
+create table device(
+	id int PRIMARY KEY auto_increment,
+	line int ,
+	tower int ,
+	phoneNumber VARCHAR(11),
+	deviceNumber VARCHAR(11),
+	model VARCHAR(11),
+	manufacturer VARCHAR(11),
+	installDate VARCHAR(11),
+	viewAddress VARCHAR(11),
+	installPerson VARCHAR(11),
+	dangerType VARCHAR(11),
+	runType VARCHAR (11),
+	description VARCHAR(11),
+	FOREIGN key (line) REFERENCES line (id),
+	FOREIGN KEY (tower) REFERENCES tower(id)
+);

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.system.xianbozhan.entity.EntityPojo;
+import com.system.xianbozhan.entity.LineName;
 import com.system.xianbozhan.entity.Tower;
 import com.system.xianbozhan.entity.User;
+import com.system.xianbozhan.service.LineService;
 import com.system.xianbozhan.service.TowerService;
 import com.system.xianbozhan.service.impl.TowerServiceImpl;
 import com.system.xianbozhan.service.impl.UserServiceImpl;
@@ -24,6 +26,8 @@ public class TowerController {
 
 	@Autowired
 	private TowerService towerService;
+	@Autowired
+	private LineService lineService;
 	
 	@RequestMapping("getTower")
 	@ResponseBody
@@ -77,9 +81,17 @@ public class TowerController {
 	
 	@RequestMapping("getTowerByTowerAndOther")
 	@ResponseBody
-	public Object getTowerByTowerAndOther(int lineName, String towerName, String towerType) {
+	public Object getTowerByTowerAndOther(String lineName, String towerName, String towerType) {
 		List<Tower> list = null;
-		list = towerService.getTowerByTowerAndOther(lineName, towerName, towerType);
+		List<LineName> line = line = lineService.getLineName();
+		int lineId = 0;
+		for(int i = 0; i < line.size(); i ++) {
+			if(lineName != null && !"".equals(lineName) && lineName.equals(line.get(i).getLineName())) {
+				lineId = line.get(i).getId();
+				break;
+			}
+		}
+		list = towerService.getTowerByTowerAndOther(lineId, towerName, towerType);
 		
 		EntityPojo entity = new EntityPojo();
 		try {
@@ -106,13 +118,29 @@ public class TowerController {
 //	
 //	
 	@RequestMapping("addTower")
-	public void addTower(HttpServletResponse response , Tower tower) {
+	public void addTower(HttpServletResponse response ,Tower tower) {
+//		Tower tower = new Tower();
+//		List<LineName> line = line = lineService.getLineName();
+//		int lineId = 0;
+//		for(int i = 0; i < line.size(); i ++) {
+//			if(lineName != null && !"".equals(lineName) && lineName.equals(line.get(i).getLineName())) {
+//				lineId = line.get(i).getId();
+//			}
+//		}
+		
 		try {
+//			tower.setId(lineId);
+//			tower.setTowerName(towerName);
+//			tower.setTowerType(towerType);
+//			tower.setTowerAddress(towerAddress);
+//			tower.setInstallDate(installDate);
+//			tower.setRunDate(runDate);
 			towerService.addTower(tower);
 			response.sendRedirect("view/tower_management.html");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//return "redirect:getTower(1)";
 	}
 //	
 //	

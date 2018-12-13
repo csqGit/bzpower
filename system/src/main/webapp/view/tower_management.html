@@ -96,10 +96,38 @@
 	color: white;
 }
 
-
+#sl{
+	width: 180px;
+	height: 30px;
+	border: 1px solid rgb(79, 231, 254);
+	border-radius: 3px;
+	background: rgb(4, 32, 79);
+	color: rgb(79, 231, 254);
+}
 </style>
 <script type="text/javascript">
-
+$(function(){
+	$(".combo").css({
+		'width' : '180px',
+		'height' : '30px',
+		'border' : '1px solid rgb(79, 231, 254)',
+		'background' : 'rgb(4, 32, 79)',
+		'border-radius' : '3px'
+	});
+	$(".combo-arrow").css({
+		'height' : '30px'
+	});
+	$("[id='cc'][class='easyui-combobox']").css({
+		'height' : '30px',
+		'border' : '0'
+	});
+	$("[autocomplete='off']").css({
+		'width' : '158px',
+		'height' : '30px',
+		'border' : 'none'
+	});
+	
+})
 </script>
 </head>
 <body>
@@ -108,9 +136,8 @@
 
 			<form id="searchForm" action="">
 				<ul id="li">
-					<li>线路名称： <input class="in" type="text" name="line_id.id"
+					<li>线路名称：<input class="in" type="text" name="lineName"
 						value="">
-						<select id="lineName"></select>
 						</li>
 					<li>杆塔名称： <input class="in" type="text" name="towerName"
 						value=""></li>
@@ -142,16 +169,18 @@
 				</thead>
 			</table>
 		</div>
-		
+
 		<!-- 线路添加修改窗口 -->
 		<div id="win" class="easyui-window" title="杆塔信息" style="width:350px;height:450px;border: none;background:rgb(0, 13, 48) "   
         data-options="iconCls:'icon-save',modal:false, closed: true">   
+        
 	        <form id="lineForm" class='towerForm' action="">
 	        	<input class='other' type="hidden" name="id"/> 
 	        	<table id="winTab">
 	     			<tr><td>线路名称</td>
 	     				<td>
-	     					<input class="other" type="text" name="line_id.id">
+	     					<input id="cc" class="easyui-combobox" name="line_id.id"   
+    data-options="valueField:'id',textField:'lineName',url:'../getLineName'" /> 
 	     				</td>
 	     			</tr>
 	     			<tr><td>杆塔名称</td><td>
@@ -163,11 +192,11 @@
 	     			<tr><td>杆塔位置</td><td>
 	     				<input class="other" type="text" name="towerAddress">
 	     			</td></tr>
-	     			<tr><td>安装位置</td><td>
-	     				<input class="other" type="text" name="installDate">
+	     			<tr><td>安装日期</td><td>
+	     				<input id="dd" type="text" class="easyui-datebox other" required="required" name="installDate"></input>  
 	     			</td></tr>
 	     			<tr><td>投运日期</td><td>
-	     				<input class="other" type="text" name="runDate">
+	     				<input id="dd" type="text" class="easyui-datebox other" required="required" name="runDate"></input> 
 	     			</td></tr>
 	     			
 	     			<tr>

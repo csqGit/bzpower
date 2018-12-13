@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.system.xianbozhan.dao.LineDAO;
 import com.system.xianbozhan.entity.Line;
+import com.system.xianbozhan.entity.LineName;
 import com.system.xianbozhan.service.LineService;
 
 @Service
@@ -19,6 +20,11 @@ public class LineServiceImpl implements LineService{
 	public List<Line> getLineList(int startPage) {
 		int start = (startPage - 1) * current;
 		return lineDAO.getLineList(start, current);
+	}
+	
+	public List<LineName> getLineName() {
+		// TODO Auto-generated method stub
+		return lineDAO.getLineName();
 	}
 
 	public Line getLineById(int id) {
@@ -58,5 +64,7 @@ public class LineServiceImpl implements LineService{
 			pages ++;
 		return pages;
 	}
+
+
 
 }

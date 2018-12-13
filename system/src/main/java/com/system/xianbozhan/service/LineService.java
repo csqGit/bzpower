@@ -5,12 +5,18 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.system.xianbozhan.entity.Line;
+import com.system.xianbozhan.entity.LineName;
 
 public interface LineService {
 	/*
 	 * 查询全部线路信息
 	 */
 	public List<Line> getLineList(int startPage);
+	
+	/*
+	 * 查询线路名称
+	 */
+	public List<LineName> getLineName();
 	
 	/*
 	 * 根据id查询线路信息

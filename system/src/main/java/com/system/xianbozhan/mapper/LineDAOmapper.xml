@@ -10,6 +10,10 @@
 		select * from line where id = #{id}
 	</select>
 	
+	<select id="getLineName" resultType="com.system.xianbozhan.entity.LineName">
+		select * from lineName
+	</select>
+	
 	<select id="getLineBylineNameAndOther" parameterType="java.lang.String" resultType="com.system.xianbozhan.entity.Line">
 		select * from line 
 		<where>

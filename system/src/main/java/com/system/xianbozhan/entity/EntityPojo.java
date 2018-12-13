@@ -9,8 +9,15 @@ public class EntityPojo {
 	private Integer count;//总条数
 	private Integer now;//当前为第几条
 	private Integer size;//至第几条
+	private String msg;
 	
 	
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 	public List getList() {
 		return list;
 	}

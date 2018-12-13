@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>设备管理界面</title>
+
+<link rel="stylesheet" type="text/css" href="../css/line_management.css" />
+<link rel="stylesheet" type="text/css" href="../css/device_management.css" />
+<link rel="stylesheet" type="text/css"
+	href="../ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../ui/themes/icon.css">
+<script type="text/javascript" src="../ui/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/device_management.js"></script>
+
+<style type="text/css">
+#deviceTab{
+	width: 100%;
+	border: 1px solid red;
+}
+#deviceTab tr {
+	position: relative;
+	margin-left: 10px;
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px solid rgb(79, 231, 254);
+	text-align: left;
+	font-size: 15px;
+	color: rgb(79, 231, 254);
+}
+#deviceTab tr td input{
+	width: 160px;
+	height: 30px;
+	padding-left: 10px;
+	background: rgb(6, 47, 103);
+	border: 1px solid rgb(79, 231, 254);
+	border-radius: 3px;
+	color: rgb(79, 231, 254);
+}
+textarea{
+	background: rgb(6, 47, 103);
+	border: 1px solid rgb(79, 231, 254);
+	border-radius: 3px;
+	color: rgb(79, 231, 254);
+	padding-left: 10px;
+	padding: 5px;
+	margin-top: 5px;
+}
+#deviceForm{
+	width: 100%;
+}
+.but{
+	position: relative;
+	left: 45%;
+	width: 50px;
+	height: 30px;
+	background: rgb(6, 47, 103);
+	border: 1px solid rgb(79, 231, 254);
+	border-radius: 3px;
+	color: rgb(79, 231, 254);
+	cursor: pointer;
+	margin-top: 5px;
+}
+</style>
+<script type="text/javascript">
+ $(function(){
+	$(".combo").css({
+		'width' : '170px',
+		'height' : '30px',
+		'border' : '1px solid rgb(79, 231, 254)',
+		'background' : 'rgb(4, 32, 79)',
+		'border-radius' : '3px'
+	});
+	$(".combo-arrow").css({
+		'height' : '30px'
+	});
+	$("[id='cc'][class='easyui-combobox']").css({
+		'height' : '30px',
+		'border' : '0'
+	});
+	$("[autocomplete='off']").css({
+		'width' : '140px',
+		'height' : '30px',
+		'border' : 'none'
+	});
+	$("[class='combobox-item']").css({
+		'width' : '140px'
+	});
+	$(".panel-body-noheader").css({
+		'border' : 'none',
+		'width' : '140px'
+	});
+
+	
+}) 
+</script>
+</head>
+<body>
+	<div id="container">
+		<div id="top">
+
+			<form id="searchForm" action="">
+				<ul id="li">
+					<li>线路名称：<input class="in" type="text" name="lineName"
+						value="">
+					</li>
+					<li>杆塔号： <input class="in" type="text" name="towerName"
+						value=""></li>
+					<li>设备识别码： <input class="in" type="text" name="towerType"
+						value=""></li>
+					<li style="width: 50px;"><input id="sub" type="button"
+						value="查询"></li>
+				</ul>
+			</form>
+			<span id="span2"><a onclick="flush()"
+				href="javascript:void(0)">刷新</a></span> <span id="span2"><a
+				onclick="addDevice('addDevice')" href="javascript:void(0)">新增</a></span>
+
+		</div>
+		<div id="main">
+			<table id="deviceTab" width="100%" border="1" cellspacing="0"
+				cellpadding="0">
+				<thead>
+					<tr
+						style="color: rgb(79, 231, 254); background: url(../images/headPG.png); height: 40px;">
+						<td>编号</td>
+						<td>线路名称</td>
+						<td>杆塔名称</td>
+						<td>设备编号</td>
+						<td>电话号码</td>
+						<td>设备识别码</td>
+						<td>型号</td>
+						<td>生产厂家</td>
+						<td>安装日期</td>
+						<td>监测位置</td>
+						<td>安装人</td>
+						<td>隐患类型</td>
+						<td>运行状态</td>
+						<td>设备描述</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+			</table>
+		</div>
+
+		
+		<!-- 线路添加修改窗口 -->
+		<div id="win" class="easyui-window" title="杆塔信息"
+			style="width: 700px; height: 420px; border: none; background: rgb(0, 13, 48)"
+			data-options="iconCls:'icon-save',modal:false">
+			<form id="deviceForm" action="">
+			<input type="hidden" name="id">
+			<table id="deviceTab" width="680px">
+				<tbody>
+					<tr>
+						<td>线路名称</td>
+						<td><!-- <input type="text" name=""> -->
+						<input id="cc" class="easyui-combobox" name="line"   
+    data-options="valueField:'id',textField:'lineName',url:'../getLineName'" /> 
+						</td>
+						<td>杆塔名称</td>
+						<td><!-- <input type="text" name="tower"> -->
+							<input id="cc" class="easyui-combobox" name="tower"   
+    data-options="valueField:'id',textField:'lineName',url:'../getTowerName'" /> 
+						</td>
+					</tr>
+					<tr>
+						<td>设备编号</td>
+						<td><input type="text" name="deviceNumber"></td>
+						<td>电话号码</td>
+						<td><input type="text" name="phoneNumber"></td>
+					</tr>
+					<tr>
+						<td>智能ICCID号</td>
+						<td><input type="text" name="iccid"></td>
+						<td>型号</td>
+						<td><input type="text" name="model"></td>
+					</tr>
+					<tr>
+						<td>生产厂家</td>
+						<td><input type="text" name="manufacturer"></td>
+						<td>安装日期</td>
+						<td><input type="text" name="installDate"></td>
+					</tr>
+					<tr>
+						<td>监测位置</td>
+						<td><input type="text" name="viewAddress"></td>
+						<td>安装人</td>
+						<td><input type="text" name="installPerson"></td>
+					</tr>
+					<tr>
+						<td>隐患类型</td>
+						<td><input type="text" name="dangerType"></td>
+						<td>运行状态</td>
+						<td><input type="text" name="runType"></td>
+					</tr>
+					<tr>
+						<td>设备描述</td>
+						<td colspan="3"><textarea name="description" wrap="soft" rows="4" cols="67"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<input class="but" type="button" value="确定">&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="but" type="reset" value="重置">
+			
+			</form>
+		</div>
+			
+
+		<ul id="ul">
+			<li id="li1"><span id="span1">第<font id="now"></font>至<font
+					id="size"></font>项结果,共计<font id="count"></font>项结果
+			</span></li>
+			<li id="li2"><span><font id="firstPage">首页</font></span> <span><font
+					id="prePage">上一页</font></span> <span><font id="currentPage"></font>/<font
+					id="pages"></font></span> <span><font id="nextPage">下一页</font></span> <span><font
+					id="lastPage">最后一页</font></span></li>
+			<li id="li3"></li>
+		</ul>
+
+	</div>
+</body>
+
+</html>

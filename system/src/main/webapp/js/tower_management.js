@@ -165,7 +165,7 @@ $(function(){
 	$("#sub").click(function(){
 		//清空表格当前的所有数据
 		$(".tbody").empty();
-		var lineName = $("#lineName").val();
+		var lineName = $("[class='in']input[name='lineName']").val();
 		var towerName = $("[class='in']input[name='towerName']").val();
 		var towerType = $("[class='in']input[name='towerType']").val();
 		$.ajax({
@@ -201,9 +201,9 @@ $(function(){
 						$.each(v, function(k2, v2){
 							var id = v2.id;
 							var lineName = v2.lineName;
-							var opt  =  "<option style='height: 40px; width:146px; display; block;' value=' " + id + "'>" + lineName + "</option>";
-							
-							$("#lineName").append(opt);
+							var opt  =  "<option style='height: 40px; width:146px; display; block;' value=' "
+								+ id + "'>" + lineName + "</option>";
+							$("#opt").append(opt);
 						});
 					}
 				});

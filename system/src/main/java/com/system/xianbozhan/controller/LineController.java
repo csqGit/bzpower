@@ -2,7 +2,9 @@ package com.system.xianbozhan.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.system.xianbozhan.entity.EntityPojo;
 import com.system.xianbozhan.entity.Line;
+import com.system.xianbozhan.entity.LineName;
 import com.system.xianbozhan.entity.Msg;
 import com.system.xianbozhan.service.LineService;
 import com.system.xianbozhan.service.impl.LineServiceImpl;
@@ -46,6 +49,23 @@ public class LineController {
 		}
 		//将集合转成对象输出
 		return JSONObject.toJSON(entity);
+	}
+	
+	
+	/*
+	 * 得到线路名称
+	 */
+	@RequestMapping("getLineName")
+	@ResponseBody
+	public Object getLineName() {
+		List<LineName> line = null;
+		try {
+			 line = lineService.getLineName();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Object obj = JSONObject.toJSON(line);
+		return obj;
 	}
 	
 	/*
