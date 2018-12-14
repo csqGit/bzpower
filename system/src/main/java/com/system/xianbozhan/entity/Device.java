@@ -8,6 +8,7 @@ public class Device {
 	private Line line;
 	private Tower tower;
 	private String phoneNumber;//电话号码
+	private String iccId;//iccid号
 	private String deviceNumber;//设备识别码, 设备编号
 	private String model;//型号
 	private String manufacturer;//生产厂家
@@ -95,12 +96,19 @@ public class Device {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getIccId() {
+		return iccId;
+	}
+	public void setIccId(String iccId) {
+		this.iccId = iccId;
+	}
 	@Override
 	public String toString() {
-		return "Device [id=" + id + ", line=" + line + ", tower=" + tower + ", phoneNumber=" + phoneNumber
-				+ ", deviceNumber=" + deviceNumber + ", model=" + model + ", manufacturer=" + manufacturer
+		return "Device [id=" + id + ", line=" + line + ", tower=" + tower + ", phoneNumber=" + phoneNumber + ", iccId="
+				+ iccId + ", deviceNumber=" + deviceNumber + ", model=" + model + ", manufacturer=" + manufacturer
 				+ ", installDate=" + installDate + ", viewAddress=" + viewAddress + ", installPerson=" + installPerson
 				+ ", dangerType=" + dangerType + ", runType=" + runType + ", description=" + description + "]";
 	}
+
 	
 }

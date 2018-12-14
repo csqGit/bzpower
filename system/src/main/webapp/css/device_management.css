@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #container {
-	width: 100%;
+	width: 99%;
 }
 
 .tbody tr:hover {
@@ -76,10 +76,6 @@
 	color: rgb(79, 231, 254);
 }
 
-.panel-header, .panel-body {
-	
-}
-
 .panel-body {
 	background: rgb(0, 60, 133);
 	color: rgb(79, 231, 254);
@@ -87,6 +83,10 @@
 
 #deviceTab{
 	text-align: center;
+	font-size: 15px;
+}
+#deviceTab tr{
+	border-bottom: 1px;
 }
 .tbody{
 	text-align: center;

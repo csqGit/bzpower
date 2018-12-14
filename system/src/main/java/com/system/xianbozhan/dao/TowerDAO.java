@@ -10,6 +10,8 @@ public interface TowerDAO {
 	
 	public List<Tower> getTowerList(@Param("startPage") int startPage, @Param("maxPage") int maxPage);
 	
+	public List<Tower> getTowerName();
+	
 	public Tower getTowerById(int id);
 	
 	public List<Tower> getTowerByTowerAndOther(@Param("lineId") int lineId, 

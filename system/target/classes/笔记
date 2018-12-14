@@ -45,7 +45,9 @@ cookie：当用户通过浏览器访问web服务器时，服务器会给客户�
 	
 		
 		
-		
+错误分析：
+1、Column 'id' in where clause is ambiguous当两张表中有两个相同的字段时，会出现此错误	
+解决方法为：给每一张表的id取别名	
 		
 		
 		

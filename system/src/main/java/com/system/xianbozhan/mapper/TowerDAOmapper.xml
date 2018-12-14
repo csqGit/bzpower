@@ -30,6 +30,10 @@
 		l.towerNumber from tower t, line l where t.line_id = l.id limit
 		#{startPage}, #{maxPage}
 	</select>
+	
+	<select id="getTowerName" resultMap="towerMap">
+		select t.id, l.lineName,  t.towerName from tower t, line l where t.line_id = l.id
+	</select>
 
 	<select id="getTowerById" parameterType="java.lang.Integer"
 		resultMap="towerMap">

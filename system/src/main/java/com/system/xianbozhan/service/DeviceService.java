@@ -10,7 +10,8 @@ public interface DeviceService {
 	
 	public Device getDeviceById(int id);
 	
-	public List<Device> getDeviceByDeviceNumberAndOther(String towerName, String deviceNumber, String lineName);
+	
+	public List<Device> getDeviceByDeviceNumber( String deviceNumber);
 	
 	public void addDevice(Device device);
 	

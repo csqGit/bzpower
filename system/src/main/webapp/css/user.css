@@ -71,6 +71,9 @@
 #but {
 	width: 50px;
 	height: 30px;
+	background: rgb(12, 59, 142);
+	color: rgb(252,193,123);
+	border: none;
 	cursor: pointer;
 }
 
@@ -79,7 +82,7 @@
 }
 
 #tab tr {
-	background: rgb(0, 39, 118);
+	background: rgb(6, 47, 103);
 	height: 33px;
 	font-size: 14px;
 	text-align: center;

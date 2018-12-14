@@ -6,6 +6,7 @@
 		id="deviceMap">
 		<id column="id" property="id" />
 		<result column="phoneNumber" property="phoneNumber" />
+		<result column="iccId" property="iccId" />
 		<result column="deviceNumber" property="deviceNumber" />
 		<result column="model" property="model" />
 		<result column="manufacturer" property="manufacturer" />
@@ -38,12 +39,60 @@
 
 	<select id="getDeviceList" parameterType="java.lang.Integer"
 		resultMap="deviceMap">
-		select d.id, d.phoneNumber, d.deviceNumber, d.model,
+		select d.id, d.phoneNumber, d.iccId, d.deviceNumber,  d.model,
 		d.manufacturer, d.installDate, d.viewAddress, d.installPerson,
 		d.dangerType, d.runType, d.description, l.lineName, t.towerName from
 		device d, line l, tower t where d.line = l.id and
-		d.tower = t.id limit #{startPage}, #{maxPage}
+		d.tower = t.id limit
+		#{startPage}, #{maxPage}
 	</select>
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(*) from device
+	</select>
+	
+	<select id="getDeviceByDeviceNumber" parameterType="java.lang.String" resultMap="deviceMap">
+		select d.id, d.phoneNumber, d.iccId, d.deviceNumber, d.model,
+		d.manufacturer, d.installDate, d.viewAddress, d.installPerson,
+		d.dangerType, d.runType, d.description, l.lineName, t.towerName from
+		device d, line l, tower t where d.line = l.id and
+		d.tower = t.id 
+		<if test="deviceNumber != null and deviceNumber != ''">
+			and deviceNumber = #{deviceNumber}
+		</if>
+	</select>
+	
+	<select id="getDeviceById" parameterType="java.lang.Integer" resultMap="deviceMap">
+		select d.id, d.phoneNumber,  d.iccId, d.deviceNumber,  d.model,
+		d.manufacturer, d.installDate, d.viewAddress, d.installPerson,
+		d.dangerType, d.runType, d.description, l.lineName, t.towerName from
+		device d, line l, tower t where d.line = l.id and
+		d.tower = t.id and d.id = #{id}
+	</select>
+
+
+	<insert id="addDevice"
+		parameterType="com.system.xianbozhan.entity.Device">
+		insert into device VALUES (#{id}, #{line.id},
+		#{tower.id}, #{phoneNumber}, #{iccId}, #{deviceNumber}, #{model},
+		#{manufacturer}, #{installDate}, #{viewAddress}, #{installPerson},
+		#{dangerType}, #{runType}, #{description})
+	</insert>
+
+
+	<update id="updateDevice"
+		parameterType="com.system.xianbozhan.entity.Device">
+		update device set line = #{line.id}, tower = #{tower.id}, phoneNumber =
+		#{phoneNumber}, iccId = #{iccId}, deviceNumber = #{deviceNumber},  model = #{model}, manufacturer = #{manufacturer},
+		installDate = #{installDate},  viewAddress = #{viewAddress},
+		installPerson = #{installPerson}, dangerType = #{dangerType},
+		runType = #{runType}, description = #{description} WHERE id = #{id}
+	</update>
+	
+	
+	<delete id="deleteDevice" parameterType="java.lang.Integer">
+		delete from device where id = #{id}
+	</delete>
 
 
 

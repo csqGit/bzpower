@@ -12,7 +12,7 @@ import com.system.xianbozhan.service.DeviceService;
 @Service
 public class DeviceServiceImpl implements DeviceService {
 	
-	public static int current = 10;
+	public static int current = 2;
 
 	@Autowired
 	private DeviceDAO deviceDAO;
@@ -23,38 +23,41 @@ public class DeviceServiceImpl implements DeviceService {
 	}
 
 	public Device getDeviceById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return deviceDAO.getDeviceById(id);
 	}
 
-	public List<Device> getDeviceByDeviceNumberAndOther(String towerName, String deviceNumber, String lineName) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Device> getDeviceByDeviceNumber(String deviceNumber) {
+		
+		return deviceDAO.getDeviceByDeviceNumber(deviceNumber);
 	}
 
 	public void addDevice(Device device) {
 		// TODO Auto-generated method stub
-
+		deviceDAO.addDevice(device);
 	}
 
 	public void updateDevice(Device device) {
 		// TODO Auto-generated method stub
-
+		deviceDAO.updateDevice(device);
 	}
 
 	public void deleteDevice(int id) {
 		// TODO Auto-generated method stub
-
+		deviceDAO.deleteDevice(id);
 	}
 
 	public int getCount() {
-		
-		return 0;
+		int count = deviceDAO.getCount();
+		return count;
 	}
 
 	public int getPages() {
-		
-		return 0;
+		int count = this.getCount();
+		int pages = count / current;
+		if(count % current != 0)
+			pages ++;
+		return pages;
 	}
 	
 	

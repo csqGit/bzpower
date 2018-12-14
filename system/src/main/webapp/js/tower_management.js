@@ -54,7 +54,7 @@ function getTowerInfo(data) {
 												var lineName = v2.line_id.lineName;
 												var lineId = v2.line_id.id;
 												var trs = "<tbody class='tbody' "
-														+ "style='background:rgb(6, 47, 103); color:rgb(252, 193, 123)'><tr><td>"
+														+ "style='background:rgb(6, 47, 103);height:35px; color:rgb(252, 193, 123)'><tr><td>"
 														+ (k2 + 1)
 														+ "</td><td>"
 														+ lineName

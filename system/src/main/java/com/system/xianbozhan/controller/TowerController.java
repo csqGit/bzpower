@@ -1,6 +1,5 @@
 package com.system.xianbozhan.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +14,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.system.xianbozhan.entity.EntityPojo;
 import com.system.xianbozhan.entity.LineName;
 import com.system.xianbozhan.entity.Tower;
-import com.system.xianbozhan.entity.User;
+import com.system.xianbozhan.entity.TowerName;
 import com.system.xianbozhan.service.LineService;
 import com.system.xianbozhan.service.TowerService;
 import com.system.xianbozhan.service.impl.TowerServiceImpl;
-import com.system.xianbozhan.service.impl.UserServiceImpl;
 
 @Controller
 public class TowerController {
@@ -29,6 +27,7 @@ public class TowerController {
 	@Autowired
 	private LineService lineService;
 	
+	@SuppressWarnings("static-access")
 	@RequestMapping("getTower")
 	@ResponseBody
 	public Object getTower(int page) {
@@ -61,6 +60,26 @@ public class TowerController {
 		}
 		Object json = JSONObject.toJSON(entity);
 		return json;
+	}
+	
+	@RequestMapping("getTowerName")
+	@ResponseBody
+	public Object getTowerName() {
+		List<Tower> tower = towerService.getTowerName();
+		//定义存放杆塔名称的集合list
+		 List<TowerName> list = new ArrayList<TowerName>();
+		for(Tower l : tower) {
+			//创建对象，为每一个对象赋值
+			TowerName towerName = new TowerName();
+			towerName.setId(l.getId());
+			String name = l.getLine_id().getLineName() + "/" +  l.getTowerName();
+			towerName.setTowerName(name);
+			//将对象添加到集合中
+			list.add(towerName);
+		}
+		Object obj = JSONObject.toJSON(list);
+		System.out.println(obj);
+		return obj;
 	}
 	
 	
@@ -98,11 +117,11 @@ public class TowerController {
 			/*
 			 * 前台需要当前页数current，总页数pages，当前为第几条now结果至第几条结果，共有多少sum条结果，共需要5个参数
 			 */
-			int current ;//当前页数
-			int pages; //总页数
-			int count; //总条数
-			int now ; //当前为第几条
-			int size ;//至第几条
+//			int current ;//当前页数
+//			int pages; //总页数
+//			int count; //总条数
+//			int now ; //当前为第几条
+//			int size ;//至第几条
 			entity.setList(list);
 			entity.setCurrent(1);
 			entity.setPages(1);

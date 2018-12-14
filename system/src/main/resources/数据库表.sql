@@ -58,3 +58,7 @@ create table device(
 	FOREIGN key (line) REFERENCES line (id),
 	FOREIGN KEY (tower) REFERENCES tower(id)
 );
+
+update device set line = 1, tower = 8, phoneNumber = '333', deviceNumber = '333', model = '333', manufacturer = '333', 
+installDate = '444', installDate = '444', viewAddress = '西安', installPerson = '小陈', dangerType = '烟雾',
+runType = '关机', description = '关机' WHERE id = 2 

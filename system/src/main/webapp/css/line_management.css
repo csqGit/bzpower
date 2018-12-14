@@ -94,21 +94,21 @@
 	line-height: 30px;
 	text-align: center;
 	margin: 10px 5px ;
-	border: 1px solid rgb(79, 231, 254);
-	background: rgb(0, 60, 133);
+	border: 1px solid rgb(36,78,153);
+	background: rgb(0, 3, 58);
 	float: right;
 }
 #span2 a:link{
 	display: block;
-	color: rgb(252, 194, 123);
+	color: rgb(79, 231, 254);
 	text-decoration: none;
 }
 #span2 a:visited{
-	color: rgb(252, 194, 123);
+	color: rgb(79, 231, 254);
 }
 #span2 a:hover{
-	background: rgb(0, 60, 170);
-	color:  rgb(79, 231, 254);
+	background: rgb(0, 39,118);
+	color:  rgb(252, 194, 123);
 }
 #sub{
 	width: 50px;

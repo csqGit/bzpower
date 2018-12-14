@@ -8,6 +8,8 @@ public interface TowerService {
 
 	public List<Tower> getTowerList(int startPage);
 	
+	public List<Tower> getTowerName();
+	
 	public Tower getTowerById(int id);
 	
 	public List<Tower> getTowerByTowerAndOther(int lineName, String  towerName, String towerType);

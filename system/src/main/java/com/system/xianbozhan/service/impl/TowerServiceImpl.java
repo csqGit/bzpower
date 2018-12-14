@@ -56,6 +56,11 @@ public class TowerServiceImpl implements TowerService{
 		// TODO Auto-generated method stub
 		return towerDAO.getTowerByTowerAndOther(lineId, towerName, towerType);
 	}
+
+	public List<Tower> getTowerName() {
+		// TODO Auto-generated method stub
+		return towerDAO.getTowerName();
+	}
 	
 
 }
