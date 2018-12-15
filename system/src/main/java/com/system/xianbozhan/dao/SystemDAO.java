@@ -2,6 +2,7 @@ package com.system.xianbozhan.dao;
 
 import java.util.List;
 
+import com.system.xianbozhan.entity.Company;
 import com.system.xianbozhan.entity.Department;
 import com.system.xianbozhan.entity.Role;
 import com.system.xianbozhan.entity.Search;
@@ -22,4 +23,6 @@ public interface SystemDAO {
 	 * 显示主页面的设备状态列表
 	 */
 	public List<Search> getSearchList();
+	
+	public List<Company> getCompany();
 }

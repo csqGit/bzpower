@@ -2,18 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.system.xianbozhan.dao.SystemDAO">
 
-	<select id="getDepartmentName" resultType="com.system.xianbozhan.entity.Department">
+	<resultMap type="com.system.xianbozhan.entity.Company"
+		id="companyMap">
+		<id column="id" property="id" />
+		<result column="companyName" property="companyName" />
+		<collection property="voltageGrade" column="voltageGrade"
+			ofType="com.system.xianbozhan.entity.VoltageGrade">
+			<id column="id" property="id" />
+		</collection>
+	</resultMap>
+
+	<resultMap type="voltageGrade" id="voltageGrade">
+		<id column="id" property="id" />
+		<collection property="line" column="line"
+			ofType="com.system.xianbozhan.entity.Line">
+			<id column="id" property="id" />
+			<result column="lineName" property="lineName" />
+		</collection>
+	</resultMap>
+
+
+	<select id="getDepartmentName"
+		resultType="com.system.xianbozhan.entity.Department">
 		select * from department
 	</select>
-	
-	
-	<select id="getRoleName" resultType="com.system.xianbozhan.entity.Role">
+
+
+	<select id="getRoleName"
+		resultType="com.system.xianbozhan.entity.Role">
 		select * from role
 	</select>
-	
-	
-	<select id="getSearchList" resultType="com.system.xianbozhan.entity.Search">
+
+
+	<select id="getSearchList"
+		resultType="com.system.xianbozhan.entity.Search">
 		select * from search
+	</select>
+
+	<select id="getCompany" resultMap="companyMap">
+		select c.id, c.companyName ,
+		l.lineName, t.towerName from company c , voltagegrade v, line l, tower
+		t where c.voltagegrade = v.id and v.line = l.id and l.tower = l.id
 	</select>
 
 

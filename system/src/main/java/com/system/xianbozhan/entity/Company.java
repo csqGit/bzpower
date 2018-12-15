@@ -1,4 +1,7 @@
 package com.system.xianbozhan.entity;
+
+import java.util.List;
+
 /**
  * 所属公司类
  * @author Admin
@@ -7,6 +10,7 @@ package com.system.xianbozhan.entity;
 public class Company {
 	private Integer id;
 	private String companyName;
+	private List<VoltageGrade> voltageGrade;
 	public Integer getId() {
 		return id;
 	}
@@ -19,9 +23,15 @@ public class Company {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
+	public List<VoltageGrade> getVoltageGrade() {
+		return voltageGrade;
+	}
+	public void setVoltageGrade(List<VoltageGrade> voltageGrade) {
+		this.voltageGrade = voltageGrade;
+	}
 	@Override
 	public String toString() {
-		return "Company [id=" + id + ", companyName=" + companyName + "]";
+		return "Company [id=" + id + ", companyName=" + companyName + ", voltageGrade=" + voltageGrade + "]";
 	}
 	
 

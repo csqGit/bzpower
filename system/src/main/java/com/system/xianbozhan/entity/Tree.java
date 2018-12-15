@@ -9,7 +9,8 @@ public class Tree {
 	private Integer id;
 	private String text;
 	private List<Tree> children;
-	private boolean checked;
+	private boolean checked = true;
+	private String state = "closed";
 	public Integer getId() {
 		return id;
 	}
@@ -34,6 +35,12 @@ public class Tree {
 	}
 	public void setChecked(boolean checked) {
 		this.checked = checked;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 	@Override
 	public String toString() {

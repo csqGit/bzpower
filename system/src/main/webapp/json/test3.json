@@ -1,0 +1,24 @@
+[{
+	"checked" : true,
+	"children" : [
+		{	
+			"checked" : true,
+			"children" :  [
+				{
+					"text" : "长堡线",
+					"children" : [
+							{
+								"text" : "22号",
+								"checked" : true
+							}
+					]
+				}
+			],
+			"text" : "220kv",
+			"id" : 0
+		}
+	],
+	"id" : 1,
+	"text" : "西安博展供电公司"
+}
+] 

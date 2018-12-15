@@ -1,11 +1,13 @@
 package com.system.xianbozhan.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.system.xianbozhan.entity.Tree;
@@ -14,8 +16,7 @@ import com.system.xianbozhan.entity.Tree;
 public class Test {
 	
 	@RequestMapping("getTree")
-	@ResponseBody
-	public Object print() {
+	public void print(HttpServletResponse response) {
 
 		Tree t11 = new Tree();
 		Tree t21 = new Tree();
@@ -35,10 +36,10 @@ public class Test {
 		
 		//设置三级菜单
 		t31.setId(1);
-		t32.setText("长堡线");
+		t31.setText("长堡线");
 		
 		t32.setId(2);
-		t32.setText("平顺县");
+		t32.setText("平顺线");
 		
 		
 		//设置司机菜单的内容
@@ -52,6 +53,7 @@ public class Test {
 		
 		//将司机菜单添加到三级
 		t31.setChildren(l4);
+		t32.setChildren(l4);
 		
 		//将三级菜单添加到二级
 		List l3 = new ArrayList();
@@ -64,9 +66,18 @@ public class Test {
 		l2.add(t21);
 		t11.setChildren(l2);
 		Object obj = JSONObject.toJSON(t11);
-		System.out.println(obj);
 		
-	return obj;
+		try {
+			obj = "[" + obj + "]";
+			response.setContentType("text/html;charset=utf-8");
+			response.getWriter().print(obj);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
 	}
 
 	

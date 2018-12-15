@@ -14,6 +14,13 @@ create table user(
 	FOREIGN key (role) REFERENCES role (id)
 );
 
+--	电压表
+create table voltageGrade(
+	id int PRIMARY KEY auto_increment,
+	line int,
+	FOREIGN KEY(line) REFERENCES line (id)
+);
+
 
 -- 线路表
 create table line(
@@ -62,3 +69,13 @@ create table device(
 update device set line = 1, tower = 8, phoneNumber = '333', deviceNumber = '333', model = '333', manufacturer = '333', 
 installDate = '444', installDate = '444', viewAddress = '西安', installPerson = '小陈', dangerType = '烟雾',
 runType = '关机', description = '关机' WHERE id = 2 
+
+
+
+-- 公司表
+create table company(
+	id int PRIMARY KEY auto_increment,
+	companyName VARCHAR (255),
+	voltageGrade int ,
+	FOREIGN KEY (voltageGrade) REFERENCES voltageGrade(id)
+);

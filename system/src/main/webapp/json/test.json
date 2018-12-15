@@ -1,49 +1,49 @@
 [{
-	"id" : 1,
-	"text" : "西安博展供电公司",
-	"children" : [
-		
-		{	
-			"text" : "220kv",
-			"children" :  [
-				{
-					"text" : "<a href='right.html' target='myFrame'>长堡线</a>",
-					"children" : [
-							{
-								"text" : "22号",
-								"checked" : true
-							},
-							{
-								"id" : 1,
-								"text" : "33号"
-							}
-					]
-				}
-			]
-		},
-		{	
-			"text" : "110kv",
-			"state" : "closed",
-			"children" :  [
-				{
-					"text" : "长堡线",
-					"state" : "closed",
-					"children" : [
-							{
-								"text" : "22号",
-								"checked" : true
-							},
-							{
-								"id" : 1,
-								"text" : "33号"
-							}
-					]
-				}
-			]
-			
-			
-			
-		}
-	]
+   "checked" : false,
+   "children" : [
+      {
+         "checked" : false,
+         "children" : [
+            {
+               "checked" : false,
+               "children" : [
+                  {
+                     "checked" : false,
+                     "id" : 1,
+                     "text" : "220号（大号侧）"
+                  },
+                  {
+                     "checked" : false,
+                     "id" : 2,
+                     "text" : "29号（小号测）"
+                  }
+               ],
+               "id" : 1,
+               "text" : "长堡线"
+            },
+            {
+               "checked" : false,
+               "children" : [
+                  {
+                     "checked" : false,
+                     "id" : 1,
+                     "text" : "220号（大号侧）"
+                  },
+                  {
+                     "checked" : false,
+                     "id" : 2,
+                     "text" : "29号（小号测）"
+                  }
+               ],
+               "id" : 2,
+               "text" : "平顺线"
+            }
+         ],
+         "id" : 1,
+         "text" : "220kv"
+      }
+   ],
+   "id" : 1,
+   "text" : "西安博展电力"
 }
-] 
+]

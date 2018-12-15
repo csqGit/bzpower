@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>导航树</title>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<style type="text/css">
+/* * {
+	margin: 0; 
+	padding: 0;
+} */
+	#tree{
+		width: 300px;
+		height: auto;
+		border: 10px solid black;
+		margin: 0 auto;
+	}
+	.firstTree, .secondTree, .thredTree, .fourTree{
+		list-style-type: none;
+		line-height: 30px;
+		margin: 0; 
+		padding: 0;
+	}
+	.secondTree, .thredTree, .fourTree{
+		margin-left: 40px;
+	}
+	.firstTree{
+		background: red;
+		color: white;
+	}
+	.secondTree{
+		background: green;
+	}
+	.thredTree{
+		background: blue;
+		color: white;
+	}
+	.fourTree{
+		background: gray;
+		color: white;
+	}
+	
+</style>
+</head>
+<body>
+<div id="tree">
+	<ul class="firstTree">
+		<li class="firstTreeLi">
+			<ul class="secondTree">
+				<li class="secondTreeLi">
+					<ul class="thredTree">
+						<li  class="thredTreeLi">
+							<ul class="fourTree">
+								<li class="fourTreeli"></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url : 'getTree',
+			type : 'post',
+			dataType : 'json',
+			success : function(data){
+				$.each(data, function(k, v){
+					if(k == 'text'){
+						var li = "<li class='firstTreeLi'>"+ v +"</li>";
+						$(".firstTreeLi").before(li);
+					}
+					//alert(k);
+					if(k == 'children'){
+						$.each(v, function(k2, v2){
+							$.each(v2, function(k3, v3){
+								//alert(k3);
+								//添加二级节点
+								if(k3 == 'text'){
+									var text = v3;
+									var li = "<li class='secondTreeLi'>" + text + "</li>";
+									$(".secondTreeLi").before(li);
+								}
+								if(k3 == 'children'){
+									//添加三级节点
+									$.each(v3, function(k4, v4){
+										//alert(k4);
+										$.each(v4, function(k5, v5){
+											//alert(v5);
+											if(k5 == 'text'){
+												var text = v5;
+												//alert(text);
+												var li = "<li class='thredTreeLi'>" + text + "</li>"; 
+												//添加三级节点
+												$(".thredTreeLi").before(li);
+											}
+											if(k5 == 'children'){
+												$.each(v5, function(k6, v6){
+													//alert(k6);
+													//alert(v6);
+													$.each(v6, function(k7, v7){
+														if(k7 == 'text'){
+															var text = v7;
+															var li = "<li  class='fourTreeLi'>" + text + "</li>";
+															$(".fourTree").append(li);
+														}
+													})
+												})
+											}
+										})
+									})
+								}
+							});
+						});
+					}
+				})
+			}
+		});
+	})
+</script>
+
+</body>
+</html>

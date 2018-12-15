@@ -1,4 +1,7 @@
 package com.system.xianbozhan.entity;
+
+import java.util.List;
+
 /*
  * 线路类
  */
@@ -10,6 +13,7 @@ public class Line {
 	private String beginLine;//起始线路
 	private String endLine;//结束线路
 	private Integer towerNumber;//杆塔数量
+	private List<Tower> tower;
 	public Integer getId() {
 		return id;
 	}
@@ -55,12 +59,18 @@ public class Line {
 			towerNumber = 0;
 		this.towerNumber = towerNumber;
 	}
+	public List<Tower> getTower() {
+		return tower;
+	}
+	public void setTower(List<Tower> tower) {
+		this.tower = tower;
+	}
 	@Override
 	public String toString() {
-		return "Line [id=" + id + ", lineName=" + lineName + ", compamyName=" + companyName + ", voltageGrade="
+		return "Line [id=" + id + ", lineName=" + lineName + ", companyName=" + companyName + ", voltageGrade="
 				+ voltageGrade + ", beginLine=" + beginLine + ", endLine=" + endLine + ", towerNumber=" + towerNumber
-				+ "]";
+				+ ", tower=" + tower + "]";
 	}
-	
+
 
 }
