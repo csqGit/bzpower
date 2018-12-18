@@ -1,0 +1,13 @@
+教师列表开发
+第一步骤：
+	1、创建教师列表实体类
+	2、创建教师列表dao接口
+	3、创建教师列表service接口
+	4、创建action类
+第二步骤：
+	1、创建DAO实现类impl包，并创建实现类实现TeachersDAO接口
+	2、创建Service实现类impl包，并创建实现类实现TeachersService接口
+		
+		
+		
+

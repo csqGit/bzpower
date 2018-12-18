@@ -1,0 +1,57 @@
+第一章
+1、导入struts2JAR包和hibernateJAR包
+2、创建xml文件，并添加struts2映射文件到xml中
+3、创建struts.xml和hibernate.cfg.xml文件
+4、创建实体类（用户类（Users），学生类 ）
+5、创建实体类的XML文件（Users.hbm.xml和Students.hbm.xml)
+6、自动生成表结构（使用schemaExport生成表结构）
+第二章：用户登录模块
+1、项目分层
+2、创建MyHibernateSessionFactory
+3、设计用户接口和实现类
+4、设计所有Action父类
+5、设计用户Action类
+6、页面调用
+7、显示报错信息
+	1 项目分层：
+		实体层
+		数据库层
+		接口层
+		接口实现层	以上四层为模型层
+		动作层	控制层
+		jsp页面	视图层
+	2、创建MyHibernatesessionFactory
+	3、设计用户接口和实现类
+		用户业务逻辑接口UsersDAO
+		用户业务逻辑实现类
+	4、设计所有Action类：
+		设计Action父类
+		继承ActionSupport
+		为了获得常用的内置对象采用耦合IOC方式注入属性
+		需要继承的接口有：ServletRequestAware
+					ServletResponseAware
+					ServletContextAware
+	5、学生管理模块：
+		1、显示学生资料
+			添加测试数据
+			设计学生业务逻辑接口
+			设计学生业务逻辑接口实现类
+			设计学生action类
+			页面调用
+		2、删除学生资料
+			设置页面操作信息，并传参
+			界面调用
+			编写业务逻辑代码
+			编写action
+			测试
+		3、学生主键生成策略
+		4、添加学生资料
+			编写添加学生业务逻辑代码
+			编写添加action
+			页面调用
+		5、修改学生资料
+		
+		
+		
+		
+
