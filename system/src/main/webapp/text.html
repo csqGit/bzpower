@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试界面</title>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var nav = new Array();
+	//循环给导航添加数据，并添加id属性
+	for(var i = 0; i < 3; i ++){
+		nav[i] = "导航" + i;
+		 var li = "<li id='_" + i + "'>" + nav[i] + "</li>";
+			$(".nav").append(li);
+	}
+	
+	$(".nav li").on("mouseover" , function(){
+		//alert($(this).attr("id"));
+		var id = $(this).attr("id");
+		for(var j = 0; j < nav.length; j ++){
+			//alert(id);
+			if(id == "_" + j){
+				//第一种方法
+				//$("#show" + j).attr('class', 'show');
+				//第二种方法
+				$("#show" + j).show();
+			}
+		}
+	})
+	
+	$(".nav li").on("mouseout", function(){
+		var id = $(this).attr("id");
+		for(var j = 0; j < nav.length; j ++){
+			if(id == "_" + j){
+				//$("#show" + j).attr('class', 'hide');
+				$("#show" + j).hide();
+			}
+		}
+	})
+})
+	
+</script>
+<style type="text/css">
+	div{
+		width: 500px;
+		height: auto;
+		margin: 0 auto;
+	}
+	
+	.nav{
+		width: 500px;
+		height: 50px;
+		background: gray;
+	}
+	.nav li{
+		list-style-type: none;
+		width: 100px;
+		line-height: 50px;
+		text-align: center;
+		border: 1px solid red;
+		margin-left: 10px;
+		color: white;
+		float: left;
+	}
+	.hide{
+		position: absolute;
+		top: 100px;
+		left: 35%;
+		width: 500px;
+		height: 100px;
+		background: pink;
+		display: none;
+	}
+	
+	.show{
+		disply: block;
+		width: 300px;
+		height: 100px;
+		background: red;
+	}
+</style>
+</head>
+<body>
+<div>
+	<ul class="nav">
+		
+	</ul>
+</div>
+<div id="container">
+	<div id="show0" class="hide">导航一显示</div>
+	<div id="show1" class="hide">导航二显示</div>
+	<div id="show2" class="hide">导航三显示</div>
+</div>
+
+</body>
+</html>

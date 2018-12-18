@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<!-- 配置自动扫描 -->
+
+	<context:component-scan
+		base-package="com.spring">
+		<!-- 不扫描controller的包 -->
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- 引入外部属性的文件 -->
+	<context:property-placeholder
+		location="classpath:jdbc.properties" />
+	<!-- 配置数据库连接资源 -->	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}"/>  
+        <property name="jdbcUrl" value="${jdbc.url}"/>   
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/> 
+        <property name="initialPoolSize" value="5" />
+		<property name="maxPoolSize" value="20" />
+	</bean>
+
+	<!-- 配置sessionFactory 得到所有连接数据库的信息，就是hibernate里面的所有配置，全部引入进来 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- 配置数据库资源 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 数据库方言，展示sql语句，数据库生成策略等文件 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<!-- 配置hibernate映射文件，自动扫描包目录 -->
+		<property name="mappingLocations">
+			<value>classpath:com/spring/entity/*.hbm.xml</value>
+		</property>
+	</bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 开启事务注解 -->
+	
+	<!-- <tx:annotation-driven
+		transaction-manager="transactionManager" /> -->
+</beans>       
+        
+        

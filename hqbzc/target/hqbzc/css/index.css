@@ -1,0 +1,455 @@
+
+* {
+	margin: 0px;
+	padding: 0;
+	font-size: 15px;
+	list-style-type: none;
+}
+
+.head {
+	width: 100%;
+	height: 80px;
+	background: black;
+	position: fixed;
+	z-index: 1000;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.head-img {
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin-top: 20px;
+	margin-left: 100px;
+	float: left;
+}
+
+#logo, .head-li li {
+	color: white;
+	text-align: center;
+}
+
+#test1 {
+	position: relative;
+	top: 90px;
+	width: 1200px;
+	height: 200px;
+	margin: 0 auto;
+}
+
+#logo {
+	display: block;
+	float: left;
+	color: white;
+	height: 80px;
+	line-height: 80px;
+	font-size: 30px;
+	padding-left: 20px;
+}
+
+.head-li {
+	width: 600px;
+	height: 80px;
+	margin-left: 50px;
+	line-height: 80px;
+	float: left;
+}
+
+.head-li a:link {
+	font-size: 20px;
+	color: white;
+}
+
+.head-li a:visited {
+	color: white;
+}
+
+.head-li a:hover {
+	color: orange;
+	transaction: font-size 0.2s, color 0.5s;
+}
+
+.head-li li {
+	width: 100px;
+	height: 80px;
+	color: white;
+	margin-left: 10px;
+	float: left;
+}
+
+.new, .repair, .eatery, .service, .copy {
+	position: relative;
+	top: 80px;
+}
+
+.new {
+	width: 1200px;
+	height: 420px;
+	margin: 0 auto;
+}
+
+.new-top {
+	width: 100%;
+	height: 50px;
+	border-bottom: 2px solid orange;
+	
+}
+
+.new-top-left {
+	width: 100px;
+	height: 50px;
+	line-height: 70px;
+	float: left;
+	
+}
+
+.new-top-right {
+	width: 50px;
+	height: 50px;
+	line-height: 70px;
+	float: right;
+}
+
+.new-left {
+	width: 370px;
+	height: 355px;
+	margin-top: 10px;
+	border: 1px solid rgb(234, 234, 234);
+	float: left;
+}
+
+.new-left-one {
+	height: 220px;
+	background: rgb(25, 158, 216);
+}
+
+.new-left-two {
+	height: 75px;
+	background: #ebebeb;
+}
+
+.new-left-three {
+	height: 60px;
+	background: rgb(251, 251, 251);
+	margin-top: 5px;
+	margin: 0 auto;
+}
+
+.more-new {
+	position: relative;
+	top: 10px;
+	display: block;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border: 1px solid #D58512;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.new-box {
+	display: block;
+	width: 100%;
+	height: 30;
+	line-height: 30px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.new-right {
+	width: 800px;
+	height: 355px;
+	border: 1px solid rgb(234, 234, 234);
+	margin-top: 10px;
+	float: right;
+}
+
+
+/*repair start*/
+.repair {
+	width: 1200px;
+	height: 610px;
+	margin: 0 auto;
+}
+
+.repair-left {
+	width: 1200px;
+	height: 360px;
+}
+
+.repair-left-one {
+	width: 230px;
+	height: 170px;
+	margin: 5px;
+	float: left;
+}
+
+.one {
+	background: #199ed8;
+}
+
+.two {
+	background: rgba(255, 153, 51);
+}
+
+.three {
+	background: rgba(0, 195, 173);
+}
+
+.four {
+	background: rgba(186, 120, 230);
+}
+
+.five {
+	background: rgba(148, 148, 148);
+}
+
+.six {
+	background: rgba(148, 148, 148);
+}
+
+.seven {
+	background: rgba(148, 148, 148);
+}
+
+.eight {
+	background: rgba(148, 148, 148);
+}
+
+.nine {
+	background: rgba(148, 148, 148);
+}
+
+.ten {
+	background: rgba(148, 148, 148);
+}
+
+.img {
+	width: 120px;
+	height: 90px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.img-a {
+	position: relative;
+	top: -120px;
+	display: block;
+	width: 234px;
+	height: 40px;
+	text-align: center;
+	padding-top: 130px;
+	color: white;
+}
+
+.repair-but {
+	width: 1200px;
+	height: 240px;
+	clear: both;
+	margin-top: 10px;
+}
+
+.repair-but-left {
+	width: 370px;
+	float: left;
+}
+
+.repair-but-one {
+	width: 370px;
+	height: 100px;
+	background: rgb(25, 158, 216);
+	margin: 0 auto;
+	line-height: 100px;
+}
+
+.repair-but-two {
+	width: 370px;
+	height: 90px;
+	background: #ebebeb;
+	margin: 0 auto;
+	line-height: 60px;
+}
+
+.repair-but-three {
+	width: 370px;
+	height: 50px;
+	background: rgb(251, 251, 251);
+	margin: 0 auto;
+}
+
+.more-repair {
+	position: relative;
+	top: 8px;
+	display: block;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid #D58512;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.repair-box {
+	display: block;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.repair-but-right {
+	width: 800px;
+	border-left: 1px solid rgb(234, 234, 234);
+	float: right;
+}
+
+.title {
+	display: block;
+	float: left;
+	padding: 15px 0 0 15px;
+}
+
+.span {
+	display: block;
+	padding-left: 60px;
+}
+/*eatery食堂 start*/
+.eatery {
+	width: 1200px;
+	height: 200px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.eatery-info {
+	width: 288px;
+	height: 200px;
+	border: 1px solid rgb(234, 234, 234);
+	margin-left: 12px;
+	float: left;
+}
+
+.info {
+	margin-left: 0;
+}
+
+.info-top {
+	width: 258px;
+	height: 50px;
+	padding-left: 20px;
+	font-size: 20px;
+	line-height: 50px;
+	border-bottom: 2px solid rgb(186, 120, 230);
+}
+
+.info-top-li {
+	width: 288px;
+	height: 150px;
+}
+
+.info-top-li li {
+	height: 29px;
+	border-bottom: 1px dashed rgb(234, 234, 234);
+	line-height: 30px;
+	padding-left: 20px;
+}
+
+.info-but {
+	width: 100%;
+	height: 160px;
+}
+
+.info-but-box {
+	position: relative;
+	top: 10px;
+	width: 240px;
+	height: 60px;
+	background: rgb(234, 234, 234);
+	margin: 0 auto;
+	line-height: 60px;
+	font-size: 18px;
+}
+
+.box {
+	margin-top: 10px;
+}
+
+/*智慧后勤信息*/
+.service {
+	width: 1200px;
+	height: 240px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.service-left {
+	width: 430px;
+	height: 235px;
+	float: left;
+}
+
+.service-info {
+	width: 210px;
+	height: 235px;
+	border: 1px solid rgb(235, 234, 234);
+	margin-left: 5px;
+	float: left;
+}
+
+.service-info-top {
+	height: 50px;
+	font-size: 20px;
+	padding-left: 20px;
+	line-height: 50px;
+	background: rgb(251, 251, 251);
+}
+
+.service-info-li {
+	height: 185px;
+}
+
+.service-info-li li {
+	height: 30px;
+	line-height: 30px;
+	padding-left: 20px;
+	border-bottom: 1px solid rgb(234, 234, 234);
+}
+
+.service-map {
+	position:relative;
+	top:-5px;
+	left:-10px;
+	width: 750px;
+	height: 240px;
+	float: right;
+}
+
+.nav {
+	display: block;
+	float: left;
+	margin: 10px 10px 0 -10px;
+}
+
+/*版权*/
+.copy {
+	width: 1200px;
+	height: 100px;
+	padding: 10px;
+	background: rgb(150,183,219);
+	margin: 0 auto;
+}
+
+.copy p {
+	width: 800px;
+	height: 33px;
+	margin: 0 auto;
+	text-align: center;
+	color: gray;
+}

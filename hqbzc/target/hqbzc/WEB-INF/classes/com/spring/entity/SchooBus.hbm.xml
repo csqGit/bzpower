@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.spring.entity">
+	<class name="SchoolBus" table="SchoolBus">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		
+		<property name="driverName" type="string" column="driver_name" />
+		<property name="busNumber" type="string" column="busNumber" />
+		<property name="departureTime" type="string" column="departureTime" />
+		
+		<property name="outAddress" type="string" column="out_address"></property>
+		<property name="arriveAddress" type="string" column="arriveAddress"></property>
+		<property name="wayStation" type="string" column="wayStation"></property>
+		<property name="closeTime" type="string" column="closeTime"></property>
+	</class>
+</hibernate-mapping>

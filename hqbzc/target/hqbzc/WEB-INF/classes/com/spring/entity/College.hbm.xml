@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.spring.entity">
+	<class name="College" table="college">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		
+		<property name="college_name" type="string" column="college_name" />
+		<set name="profession" table="profession">
+			<key column="profession_id"></key>
+			<one-to-many class="Profession" />
+		</set>
+		
+	</class>
+</hibernate-mapping>

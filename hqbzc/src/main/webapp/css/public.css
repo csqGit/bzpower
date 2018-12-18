@@ -1,0 +1,100 @@
+
+* {
+	margin: 0px;
+	padding: 0;
+	font-size: 15px;
+	list-style-type: none;
+}
+
+.head {
+	width: 100%;
+	height: 80px;
+	background: black;
+	position: fixed;
+	z-index: 1000;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.head-img {
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin-top: 20px;
+	margin-left: 100px;
+	float: left;
+}
+
+#logo, .head-li li {
+	color: white;
+	text-align: center;
+}
+
+#test1 {
+	position: relative;
+	top: 90px;
+	width: 1200px;
+	height: 200px;
+	margin: 0 auto;
+}
+
+#logo {
+	display: block;
+	float: left;
+	color: white;
+	height: 80px;
+	line-height: 80px;
+	font-size: 30px;
+	padding-left: 20px;
+}
+
+.head-li {
+	width: 600px;
+	height: 80px;
+	margin-left: 50px;
+	line-height: 80px;
+	float: left;
+}
+
+.head-li a:link {
+	font-size: 20px;
+	color: white;
+}
+
+.head-li a:visited {
+	color: white;
+}
+
+.head-li a:hover {
+	color: orange;
+	transaction: font-size 0.2s, color 0.5s;
+}
+
+.head-li li {
+	width: 100px;
+	height: 80px;
+	color: white;
+	margin-left: 10px;
+	float: left;
+}
+
+
+/*版权*/
+.copy {
+	width: 1200px;
+	height: 100px;
+	padding: 10px;
+	background: rgb(234, 234, 234);
+	margin: 0 auto;
+}
+
+.copy p {
+	width: 800px;
+	height: 33px;
+	margin: 0 auto;
+	text-align: center;
+	color: gray;
+}
