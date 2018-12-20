@@ -44,6 +44,11 @@
 		l.lineName, t.towerName from company c , voltagegrade v, line l, tower
 		t where c.voltagegrade = v.id and v.line = l.id and l.tower = l.id
 	</select>
+	
+	
+	<select id="getPicture" resultType="com.system.xianbozhan.entity.Picture">
+		select * from picture limit #{startPage}, #{maxPage}
+	</select>
 
 
 </mapper>

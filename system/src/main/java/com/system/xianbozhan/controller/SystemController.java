@@ -15,6 +15,7 @@ import com.system.xianbozhan.entity.Company;
 import com.system.xianbozhan.entity.Department;
 import com.system.xianbozhan.entity.Line;
 import com.system.xianbozhan.entity.LineName;
+import com.system.xianbozhan.entity.Picture;
 import com.system.xianbozhan.entity.Role;
 import com.system.xianbozhan.entity.Search;
 import com.system.xianbozhan.entity.Tower;
@@ -138,6 +139,24 @@ public class SystemController {
 	public Object pring() {
 		List list = systemService.getCompany();
 		System.out.println(list);
+		Object obj = JSONObject.toJSON(list);
+		System.out.println(obj);
+		return obj;
+	}
+	
+	
+	/*
+	 * 得到轮播图片地址
+	 */
+	@RequestMapping("getPictureUrl")
+	@ResponseBody
+	public Object getPictureUrl(int page) {
+		List<Picture> list = null;
+		try {
+			list = systemService.getPicture(page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Object obj = JSONObject.toJSON(list);
 		System.out.println(obj);
 		return obj;

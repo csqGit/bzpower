@@ -12,7 +12,7 @@ import com.system.xianbozhan.service.DeviceService;
 @Service
 public class DeviceServiceImpl implements DeviceService {
 	
-	public static int current = 2;
+	public static int current = 10;
 
 	@Autowired
 	private DeviceDAO deviceDAO;

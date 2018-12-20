@@ -79,3 +79,9 @@ create table company(
 	voltageGrade int ,
 	FOREIGN KEY (voltageGrade) REFERENCES voltageGrade(id)
 );
+
+-- 图片地址表
+create table picture(
+	id int PRIMARY key auto_increment,
+	pictureUrl VARCHAR (255)
+)

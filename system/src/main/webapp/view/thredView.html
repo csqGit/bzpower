@@ -11,25 +11,40 @@
 #container{
 	width: 1040px;
 	height: 540px;
-	background: pink;
 	border: red;
 }
 .left{
 	width: 750px;
-	height: 540px;
-	border: 1px solid red;
+	height: 528px;
 	float: left;
 }
+
+.left_top{
+	width: 750px;
+	height: 380px;
+}
+.left_top img{
+	width: 750px;
+	height: 380px;
+}
+.left_bottom{
+	width: 750px;
+	height: 138px;
+	margin-top: 10px;
+	/* border: 1px solid rgb(0, 22, 70); */
+	background: rgb(0, 22, 70);
+}
+
 .right{
 	width: 280px;
 	height: 540px;
-	margin-left: 10px;
 	float: right;
 }
 .right_top{
-	width: 280px;
-	height: 280px;
-	border: 1px solid blue;
+	width: 278px;
+	height: 258px;
+	background: rgb(0, 22, 70);
+	border: 1px solid rgb(0, 22, 70);
 }
 .nav_p{
 	width: 270px;
@@ -40,36 +55,131 @@
 }
 #navTab{
 	width: 280px;
+	margin-left: -1px;
+	font-family: "正楷";
 }
 #navTab tr{
-	height: 30px
+	height: 29px
 }
 #navTab tr td{
 	width: 90px;
-	background: rgb(29, 72, 150);
+	background: url("../images/btn_background.png");
 	text-align: center;
+	font-size: 14px;
 }
-#navTab tr td
+#navTab tr td a:link{
+	text-decoration: none;
+	color: rgb(252, 193, 123);
+}
+#navTab tr td a:visited{
+	text-decoration: none;
+	color: rgb(252, 193, 123);
+}
+#navTab tr td a:hover{
+	text-decoration: none;
+	color: rgb(79, 231, 254);
+}
+.nav_bottom{
+	width: 280px;
+	height: 260px;
+	margin-top: 10px;
+}
+.preSpan, .nextSpan{
+	width: 20px;
+	height: 40px;
+	margin-top: 50px;
+	/* background: rgb(79, 231, 254);
+	border: 1px solid rgb(79, 231, 254); */
+	border-radius: 3px;
+	display: block
+}
+.preSpan{
+	float: left;
+}
+.nextSpan{
+	float: right;
+}
+.picUl{
+	position: relative;
+	left: 10px;
+	top: 10px;
+	width: 690px;
+	height: 120px;
+	float: left;
+}
+.picUl li{
+	list-style-type: none;
+	width: 165px;
+	height: 120px;
+	border: 1px solid rgb(252, 193, 123);
+	margin-left: 5px;
+	float: left;
+}
+.picUl li img{
+	width: 165px;
+	height: 120px;
+}
+
+
 </style>
+<link rel="stylesheet" type="text/css" href="../css/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="../ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../ui/themes/icon.css">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../ui/jquery.min.js"></script>
+<script type="text/javascript" src="../ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	
+</script>
 </head>
 <body>
 
 	<div id="container">
-		<div class="left"></div>
+		<div class="left">
+			<div class="left_top">
+				<img alt="图片" src="../images/99000843030892_20181219143005.jpg" width="">		
+			</div>
+			<div class="left_bottom">
+				<span class="preSpan"><a href="javascript:void(0)"><img alt="" src="../images/btn_nav_left.png"></a></span>
+				<ul class="picUl">
+					<li style="margin-left: 0;"><a href="javascript:void(0)"><img alt="图片" src="../images/1.jpg" width=""></a>	</li>
+					<li><a href="javascript:void(0)" onclick="pic('1.jpg')"><img alt="图片" src="../images/1.jpg" width=""></a></li>
+					<li><a href="javascript:void(0)"><img alt="图片" src="../images/1.jpg" width=""></a></li>
+					<li><a href="javascript:void(0)"><img alt="图片" src="../images/1.jpg" width=""></a></li>
+				</ul>
+				<span class="nextSpan"><a href="javascript:void(0)"><img alt="" src="../images/btn_nav_right.png"></a></span>
+			</div>
+		</div>
+		
+		
+		
 		<div class="right">
 			<div class="right_top">
 				<p class="nav_p">功能导航</p>
-				<table id="navTab">
+				<table id="navTab"  cellpadding="0">
 					<tbody>
 						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
-						<tr><td><a href=""></a></td><td><a href=""></a></td><td><a href=""></a></td></tr>
-						<tr><td><a href=""></a></td><td><a href=""></a></td><td><a href=""></a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+					
 						
 					</tbody>
 				</table>
 			</div>
+			
+			
+			
+			<div class="nav_bottom">这是底部</div>
 		</div>
 	</div>
+	
+	
 
 </body>
 </html>

@@ -39,7 +39,7 @@ public class DeviceController {
 			pages = deviceService.getPages();
 			count = deviceService.getCount();
 			now = (page - 1) * DeviceServiceImpl.current + 1;
-			size = device.size() + now;
+			size = device.size() + now - 1;
 			entity.setCount(count);
 			entity.setCurrent(current);
 			entity.setList(device);
