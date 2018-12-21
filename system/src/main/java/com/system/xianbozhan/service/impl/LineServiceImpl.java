@@ -12,7 +12,7 @@ import com.system.xianbozhan.service.LineService;
 
 @Service
 public class LineServiceImpl implements LineService{
-	public static int current = 3;
+	public static int current = 10;
 	
 	@Autowired
 	private LineDAO lineDAO;

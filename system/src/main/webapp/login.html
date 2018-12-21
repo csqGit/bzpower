@@ -50,7 +50,6 @@
 
 		</form>
 	</div>
-
 </body>
 <script type="text/javascript">
 	$(function() {
@@ -91,9 +90,13 @@
 			}
 		}
 		$("#log").click(function(){
+			/* var username = $("input[name='username']").val();
+			var password = $("input[name='password']").val(); */
 			//调用表单验证方法
-			if(check())
+			if(check()){
 				$("#logForm").submit();
+			}
+				
 			
 			//登录失败以后显示失败信息
 		});

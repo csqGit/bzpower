@@ -40,18 +40,19 @@ body{
 }
 .top_logout{
 	float: right;
-	width: 100px;
+	width: 80px;
 	height: 30px;
 	margin-top: 20px;
 	margin-right: 50px;
 	background: rgb(36,91,164);
 	text-align: center;
 	line-height: 30px;
-	border: 1px solid rgb(0, 13, 48);
-	border-radius: 20px;
+	border: 1px solid rgb(36, 79, 164);
+	border-radius: 10px;
+	font-size: 15px;
 }
 .top_logout a:link{
-	color: rgb(249, 182, 82);
+	color: white;
 	text-decoration: none;
 }
 .top_logout a:visited{
@@ -59,7 +60,7 @@ body{
 	text-decoration: none;
 }
 .top_logout a:hover{
-	color: rgb(249, 182, 82);
+	color: rgb(79, 231, 254);
 }
 .nav{
 	width: 100%;
@@ -101,6 +102,7 @@ body{
 	height: 40px;
 	margin-top: 1px;
 	text-decoration: none;
+	/* color: rgb(249, 182, 82); */
 	color: white;
 }
 .ul a:visited{
@@ -109,7 +111,8 @@ body{
 }
 .ul a:hover{
 	background: rgb(79, 231, 254);
-	color: black;
+	/* background: rgb(79, 231, 254); */
+	color: rgb(249, 182, 82);
 	text-decoration: none;
 }
 

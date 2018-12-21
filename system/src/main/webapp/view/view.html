@@ -9,6 +9,130 @@
 <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
 <link  type="text/css" rel="styleSheet" href="../css/themes/default/easyui.css">
 <link  type="text/css" rel="styleSheet" href="../css/themes/icon.css">
+
+
+<style type="text/css">
+*{
+	margin: 0 ;
+	padding: 0;
+}
+#container{
+	position: relative;
+	width: 1040px;
+	height: 540px;
+	border: red;
+}
+.left{
+	width: 750px;
+	height: 528px;
+	float: left;
+}
+
+.left_top{
+	width: 750px;
+	height: 380px;
+}
+.left_top img{
+	width: 750px;
+	height: 380px;
+}
+.left_bottom{
+	width: 750px;
+	height: 138px;
+	margin-top: 10px;
+	/* border: 1px solid rgb(0, 22, 70); */
+	background: rgb(0, 22, 70);
+}
+
+.right{
+	width: 280px;
+	height: 540px;
+	float: right;
+}
+.right_top{
+	width: 278px;
+	height: 258px;
+	background: rgb(0, 22, 70);
+	border: 1px solid rgb(0, 22, 70);
+}
+.nav_p{
+	width: 270px;
+	line-height: 40px;
+	padding-left: 10px;
+	background: rgb(0, 13, 48);
+	color: rgb(79, 231, 254);
+}
+#navTab{
+	width: 280px;
+	margin-left: -1px;
+	font-family: "正楷";
+}
+#navTab tr{
+	height: 29px
+}
+#navTab tr td{
+	width: 90px;
+	background: url("../images/btn_background.png");
+	text-align: center;
+	font-size: 14px;
+}
+#navTab tr td a:link{
+	text-decoration: none;
+	color: rgb(252, 193, 123);
+}
+#navTab tr td a:visited{
+	text-decoration: none;
+	color: rgb(252, 193, 123);
+}
+#navTab tr td a:hover{
+	text-decoration: none;
+	color: rgb(79, 231, 254);
+}
+.nav_bottom{
+	width: 280px;
+	height: 260px;
+	margin-top: 10px;
+}
+.preSpan, .nextSpan{
+	width: 20px;
+	height: 40px;
+	margin-top: 50px;
+	/* background: rgb(79, 231, 254);
+	border: 1px solid rgb(79, 231, 254); */
+	border-radius: 3px;
+	display: block
+}
+.preSpan{
+	float: left;
+}
+.nextSpan{
+	float: right;
+}
+.picUl{
+	position: relative;
+	left: 10px;
+	top: 10px;
+	width: 690px;
+	height: 120px;
+	float: left;
+}
+.picUl li{
+	list-style-type: none;
+	width: 165px;
+	height: 120px;
+	border: 1px solid rgb(252, 193, 123);
+	margin-left: 5px;
+	float: left;
+}
+.picUl li img{
+	width: 165px;
+	height: 120px;
+}
+
+
+</style>
+
+
 <style type="text/css">
 *{
 	margin: 0;
@@ -18,6 +142,7 @@
 	width: 300px;
 	height: 100%;
 	background: rgb(0, 22, 70);
+	
 	float: left;
 }
 #br{
@@ -58,6 +183,28 @@
 	border: 0;
 	cursor: pointer;
 }
+.tree-title a:link{
+	text-decoration: none;
+	color: rgb(249,192,122);
+}
+.tree-title a:visited{
+	text-decoration: none;
+	color: rgb(249,192,122);
+}
+.tree-title a:hover{
+	text-decoration: none;
+	color: rgb(79, 231, 254);
+}
+.tree-node-selected{
+	background: rgb(241, 243, 244);
+}
+.tree-node-hover{
+	background: rgb(0, 60, 133);
+}
+
+/* ::-webkit-scrollbar: red;
+::-webkit-scrollbar-thumb: 50px;
+::-webkit-scrollbar-corner: 40px; */
 </style>
 <link rel="stylesheet" type="text/css" href="../css/view.css">
 </head>
@@ -86,7 +233,7 @@
 								type : 'post',
 								dataType : 'json',
 								success : function(data){
-									alert(2);
+									//alert(2);
 								}
 							});
 						});
@@ -94,12 +241,35 @@
 				</script>
 				<input id="but" type="button" value="搜索">
 			</div>
-			
-				
-			<ul	id="treeId"></ul>
+			<ul	id="treeId" style=" width: 300px; height: 495px; overflow-y: scroll;"></ul>
 		</div>
 	<div id="br">
 		<iframe id="iframe" name="myFrame" width="100%" height="100%" scrolling="no" marginwidth="0" marginheight="0" frameborder='no' border='0' src="right.html"></iframe>
+			
+		<div class="right">
+			<div class="right_top">
+				<p class="nav_p">功能导航</p>
+				<table id="navTab"  cellpadding="0">
+					<tbody>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+						<tr><td><a href="">主机抓拍</a></td><td><a href="">副机抓拍</a></td><td><a href="">线路总览</a></td></tr>
+					
+						
+					</tbody>
+				</table>
+			</div>
+			
+			
+			
+			<div class="nav_bottom">这是底部</div>
+		</div>
+	</div>
+	
 	</div>
 	</div>
 	
@@ -109,7 +279,7 @@
  * 这里有一段测试代码
  */
 	$("#treeId").tree({
-		url : "../getTree",
+		url : "../json/test2.json",
 		lines : "true"
 	});
 </script>

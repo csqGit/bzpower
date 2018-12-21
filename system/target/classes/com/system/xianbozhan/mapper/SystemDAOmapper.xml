@@ -49,6 +49,10 @@
 	<select id="getPicture" resultType="com.system.xianbozhan.entity.Picture">
 		select * from picture limit #{startPage}, #{maxPage}
 	</select>
+	
+	<select id="getPictureCount" resultType="java.lang.Integer">
+		select count(*) from picture
+	</select>
 
 
 </mapper>

@@ -10,13 +10,16 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 		<!-- 自动扫描包 -->
-		<context:component-scan base-package="com.system.xianbozhan" />
+		<context:component-scan base-package="com.system.xianbozhan">
+			<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
+		</context:component-scan>
 		
 		<!-- 加载外部资源 -->
 		<context:property-placeholder location="classpath:db.properties"/>
 		
 		<!-- 配置数据源 -->
-		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- destroy-method的作用为： 数据库不适用的时候，把连接放到连接池中，供下次使用 -->
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="closed">
 			<property name="driverClass" value="${jdbc.driverClass}" />
 			<property name="jdbcUrl" value="${jdbc.jdbcUrl}" />
 			<property name="user" value="${jdbc.username}" />

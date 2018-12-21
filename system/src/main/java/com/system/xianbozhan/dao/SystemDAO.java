@@ -36,4 +36,8 @@ public interface SystemDAO {
 	 * 轮播图片
 	 */
 	public List<Picture> getPicture(@Param("startPage") int startPage,@Param("maxPage") int maxPage);
+	/*
+	 * 得到图片总数
+	 */
+	public int getPictureCount();
 }

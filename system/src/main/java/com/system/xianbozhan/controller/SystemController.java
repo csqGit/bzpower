@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.system.xianbozhan.entity.Company;
 import com.system.xianbozhan.entity.Department;
+import com.system.xianbozhan.entity.EntityPojo;
 import com.system.xianbozhan.entity.Line;
 import com.system.xianbozhan.entity.LineName;
 import com.system.xianbozhan.entity.Picture;
@@ -24,6 +25,7 @@ import com.system.xianbozhan.service.LineService;
 import com.system.xianbozhan.service.SystemService;
 import com.system.xianbozhan.service.TowerService;
 import com.system.xianbozhan.service.UserService;
+import com.system.xianbozhan.service.impl.SystemServiceImpl;
 
 /*
  * 系统类
@@ -151,13 +153,20 @@ public class SystemController {
 	@RequestMapping("getPictureUrl")
 	@ResponseBody
 	public Object getPictureUrl(int page) {
+		EntityPojo entity = new EntityPojo();
+		//得到图片地址集合
 		List<Picture> list = null;
+		//得到总页数
+		int pages = systemService.getPicturePage();
 		try {
 			list = systemService.getPicture(page);
+			entity.setList(list);
+			entity.setPages(pages );
+			entity.setCurrent(SystemServiceImpl.currentPage - 1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Object obj = JSONObject.toJSON(list);
+		Object obj = JSONObject.toJSON(entity);
 		System.out.println(obj);
 		return obj;
 	}

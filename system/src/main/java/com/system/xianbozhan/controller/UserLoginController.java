@@ -1,5 +1,7 @@
 package com.system.xianbozhan.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +27,7 @@ public class UserLoginController {
 	private UserService userService;
 
 	@RequestMapping("adminLogin")
-	public String login(HttpServletRequest req, HttpServletResponse resp,  String username, String password) {
+	public void login(HttpServletRequest req, HttpServletResponse resp,  String username, String password) {
 		Admin admin = null;
 		Cookie cook = null;
 		String msg = "";
@@ -36,7 +38,8 @@ public class UserLoginController {
 				req.setAttribute("msg", msg);
 				cook = new Cookie("msg", msg);
 				resp.addCookie(cook);
-				return "login.html";
+				//return "login.html";
+				resp.sendRedirect("index.html");
 			}else {
 				admin = userLoginService.login(username, password);
 				if(admin == null) {
@@ -44,7 +47,8 @@ public class UserLoginController {
 					req.setAttribute("msg", msg);
 					cook = new Cookie("msg", msg);
 					resp.addCookie(cook);
-					return "login.html";
+					//return "login.html";
+					resp.sendRedirect("login.html");
 				}
 			}
 		} catch (Exception e) {
@@ -52,7 +56,13 @@ public class UserLoginController {
 			msg = "登录失败!!!";
 			cook = new Cookie("msg", msg);
 			resp.addCookie(cook);
-			return "login.html";
+			//return "login.html";
+			try {
+				resp.sendRedirect("login.html");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		req.getSession().setAttribute("admin", admin);
 		Cookie name = new Cookie("name", admin.getName());
@@ -75,7 +85,13 @@ public class UserLoginController {
 		System.out.println("总数：" + num);
 		System.out.println("当签署：" + count);
 		System.out.println("离线数：" + (num - count));
-		return "index.html";
+		try {
+			resp.sendRedirect("index.html");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//return "index.html";
 	}
 	
 	//用户注销

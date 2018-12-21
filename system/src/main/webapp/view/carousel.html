@@ -4,57 +4,70 @@
 <meta charset="UTF-8">
 <title>轮播图片页面</title>
 <style type="text/css">
-*{
+* {
 	margin: 0;
 	padding: 0;
 	background: rgb(0, 3, 58);
+	font-family: "华文细黑";
 }
-#container{
+
+#container {
 	width: 1360px;
 	height: 530px;
 	margin: 10px auto;
 }
-.time{
+
+.time {
 	width: 100%;
 	height: 30px;
 	line-height: 30px;
 	border-bottom: 1px solid rgb(36, 78, 153);
 	color: white;
 	text-align: center;
-	
 }
-.time span{
+
+.time span {
 	padding-left: 10px;
 }
-.top{
+
+.top {
 	width: 100%;
 	height: 450px;
-	border: 1px solid rgb(36, 78, 153);
+	
+	
 	margin-top: 10px;
 }
-.ul li{
+.ul{
+	height: 225px;
+	border-bottom: 1px solid rgb(36, 78, 153);
+}
+.ul li {
 	list-style-type: none;
 	width: 328px;
 	height: 215px;
 	margin: 5px;
 	float: left;
 }
-.ul li img{
+
+.ul li img {
 	width: 328px;
 	height: 215px;
 }
-.bottom{
+
+.bottom {
 	width: 100%;
 	height: 215px;
 	margin-top: 10px;
 	/* border: 1px solid rgb(36, 78, 153); */
 }
-.page{
-	width: 500px; 
+
+.page {
+	width: 500px;
 	height: 30px;
 	margin: 10px auto;
 }
-.page span{
+
+.page span {
 	display: block;
 	width: 80px;
 	height: 25px;
@@ -64,88 +77,167 @@
 	margin-left: 10px;
 	background: rgb(0, 60, 133);
 }
-.page span a:link{
+
+.page span a:link {
 	color: rgb(252, 193, 123);
 	text-decoration: none;
 	background: none;
 }
-.page span a:visited{
+
+.page span a:visited {
 	color: rgb(252, 193, 123);
 	text-decoration: none;
 }
-.page span a:hover{
+
+.page span a:hover {
 	color: rgb(252, 193, 123);
+}
+font {
+	background: none;
 }
 </style>
 
 <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
-	$(function(){
+	$(function() {
 		//设置定时时间尾5秒刷新一次
 		var time = 10000;
-		flush();
+		var currentPageStr = $("#currentPage").text();
+		var currentPage = parseInt(currentPageStr);
+		var page = 0;
+
+		//页面加载时同时加载数据
+		flush(currentPage);
 		
-		var interval = setInterval(flush, time);
-		
-		function flush(){
-			var page = 1;
-			if(page > 3){
-				page = 1;
-			}
+		//异步请求数据
+		function flush(current) {
 			$.ajax({
-				url : '../getPictureUrl',
-				type : 'post',
-				data : {
-					'page' : page
-				},
-				dataType : 'json',
-				success : function(data){
-					$(".ul").empty();
-					$.each(data, function(k, v){
-						$.each(v, function(k1, v1){
-						if(k1 == 'pictureUrl'){
-								var li = "<li><img alt='' src='../images/"+ v1 + "' /></li>";
-								$(".ul").append(li);
-							}
-						})
-						
-					})
-				}
-			});
-			page ++;
-		} 
+						url : '../getPictureUrl',
+						type : 'post',
+						data : {
+							'page' : current
+						},
+						dataType : 'json',
+						success : function(data) {
+							$(".ul").empty();
+							$.each(data,function(k, v) {
+												if (k == 'current'){
+													$("#currentPage").html(v);
+													currentPage = v;
+												}
+												if (k == 'pages'){
+													page = v;
+													$("#pages").html(v);
+												}
+												if (k == 'list') {
+													$.each(v,function(	k1,v1) {
+																		$.each(v1,function(k2,v2) {
+																							if (k2 == 'pictureUrl') {
+																								var li = "<li><img alt='' src='../upload/"+ v2 + "' /></li>";
+																								$(
+																										".ul")
+																										.append(
+																												li);
+																							}
+																						})
+																	})
+												}
+
+											})
+						}
+					});
+			
+			/* if (currentPage > page) {
+				currentPage = 1;
+			}
+			currentPage ++; */
+		}
+
+		var interval = setInterval(flush, time, currentPage);//回调函数，定时时间，参数
 		
 		//设置页面时间
-		var htmlTime = 10;
-		var interval = setInterval(function(){
-			
-			if(htmlTime < 0)
-				htmlTime = 10;
+		var htmlTime = 9;
+		var interval = setInterval(function() {
+
+			if (htmlTime < 0)
+				htmlTime = 9;
 			$("#time").html(htmlTime);
-			htmlTime --;
+			htmlTime--;
 		}, 1000);
 		
+		
+		//分页查询
+
+		$("#firstPage").on("click", function() {
+			var currentPageStr = $("#currentPage").text();//获取当前页数
+			var pagesStr = $("#pages").text();//获取总页数
+			var currentPage = parseInt(currentPageStr);
+			var pages = parseInt(pagesStr);
+			
+			if (currentPage <= 1)
+				return false;
+			currentPage = 1;
+			flush(currentPage);
+		});
+		$("#prePage").on("click", function() {
+			var currentPageStr = $("#currentPage").text();//获取当前页数
+			var pagesStr = $("#pages").text();//获取总页数
+			var currentPage = parseInt(currentPageStr);
+			var pages = parseInt(pagesStr);
+			if (currentPage <= 1)
+				return false;
+			currentPage--;
+			flush(currentPage);
+		});
+	$("#nextPage").on("click", function() {
+			
+			var currentPageStr = $("#currentPage").text();//获取当前页数
+			var pagesStr = $("#pages").text();//获取总页数
+			var currentPage = parseInt(currentPageStr);
+			var pages = parseInt(pagesStr);
+			if (currentPage >= pages)
+				return false;
+			currentPage ++;
+			flush(currentPage);
+		});
+		$("#lastPage").on("click", function() {
+			var currentPageStr = $("#currentPage").text();//获取当前页数
+			var pagesStr = $("#pages").text();//获取总页数
+			var currentPage = parseInt(currentPageStr);
+			var pages = parseInt(pagesStr);
+			if (currentPage >= pages)
+				return false;
+			currentPage = pages;
+			flush(currentPage);
+		});
+
 	})
 	
-	//定时器
 	
+
+		
+
+
+	//定时器
 </script>
 </head>
 <body>
 	<div id="container">
-		<div class="time"><span>页面距离跳转还有<font id="time" color="red"></font><font>s</font></span></div>
-		<div class="top">
-			<ul class="ul">
-				
-			</ul>
+		<div class="time">
+			<span>页面距离跳转还有&nbsp;&nbsp;<font id="time" style="color: rgb(79, 231, 254)">10</font><font>&nbsp;&nbsp;s</font></span>
 		</div>
-		
+		<div class="top">
+			<!-- 这儿时Ajax异步请求数据 -->
+			<ul class="ul"></ul>
+		</div>
+
 		<div class="page">
-			<span><a href="#">首页</a></span>
-			<span><a href="#">上一页</a></span>
-			<span><a href="#">1/3</a></span>
-			<span><a href="#">下一页</a></span>
-			<span><a href="#">尾页</a></span>
+			<span><a href="javascript:void(0)" id="firstPage">首页</a></span> <span><a
+				href="javascript:void(0)" id="prePage">上一页</a></span> <span><a
+				href="javascript:void(0)"><font id="currentPage">1</font>/<font
+					id="pages"></font></a></span> <span><a href="javascript:void(0)"
+				id="nextPage">下一页</a></span> <span><a href="javascript:void(0)"
+				id="lastPage">尾页</a></span>
 		</div>
 	</div>
 </body>

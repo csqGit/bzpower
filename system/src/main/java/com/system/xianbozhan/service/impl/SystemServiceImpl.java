@@ -16,6 +16,8 @@ import com.system.xianbozhan.service.SystemService;
 @Service
 public class SystemServiceImpl implements SystemService{
 	
+	public static int current = 8;
+	
 	@Autowired
 	private SystemDAO systemDAO;
 
@@ -43,10 +45,23 @@ public class SystemServiceImpl implements SystemService{
 	}
 
 
+	public static int currentPage = 1;
 	public List<Picture> getPicture(int page) {
-		int current = 8;
-		int maxPage = (2 - 1) * current;
-		return systemDAO.getPicture(page, maxPage);
+		if(currentPage > this.getPicturePage()) {
+			currentPage = 1;
+		}
+		int maxPage = (currentPage - 1) * current;
+		currentPage ++;
+		return systemDAO.getPicture(maxPage, current + maxPage);
+	}
+
+
+	public int getPicturePage() {
+		int count = systemDAO.getPictureCount();
+		int page = count / current;
+		if(count % current != 0)
+			page ++;
+		return page;
 	}
 
 	

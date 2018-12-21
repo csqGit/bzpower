@@ -24,4 +24,9 @@ public interface SystemService {
 	 * 轮播图片
 	 */
 	public List<Picture> getPicture(int page);
+	
+	/*
+	 * 得到图片总数
+	 */
+	public int getPicturePage();
 }

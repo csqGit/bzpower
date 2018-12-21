@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>设备信息详情</title>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "华文细黑";
+}
+#container{
+	width: 1330px;
+	height: 520px;
+	background: rgb(0, 3, 58);
+	margin: 10px auto;
+}
+#tab{
+	width: 1330px;
+	text-align: center;
+	font-size: 15px;
+	font-family: "华文细黑";
+}
+#tab tr:hover{
+	background: rgb(4, 32, 79);
+}
+#top{
+	width: 100%;
+	height: 35px;
+	color: rgb(79, 231, 254);
+	font-size: 14px;
+}
+#top p{
+	position: relative;
+	left: 50%;
+	width: 200px;
+	height: 35px;
+	line-height: 35px;
+	font-family: "华文细黑";
+	float: left;
+}
+#top a:link {
+	display: block;
+	width: 70px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid rgb(36, 78, 153);
+	float: right;
+	margin-right: 20px;	
+	text-align: center;
+	margin-top: 1px;
+	color: rgb(79, 231, 254);
+	text-decoration: none;
+	
+	font-family: "楷体";
+}
+#top a:visited{
+	text-decoration: none;
+	color: rgb(79, 231, 254)
+}
+#top a:hover{
+	
+}
+</style>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<div id="container">
+	<div id="top">
+		<p>线路详细信息</p>
+		<a href="#">导出表格</a>
+	</div>
+	<table id="tab" border="1" cellspacing="0"
+				cellpadding="0">
+		<thead>
+			<tr style="color: rgb(79, 231, 254); background: url(../images/headPG.png); height: 40px;">
+				<td>序号</td>
+				<td>所属公司</td>
+				<td>电压等级</td>
+				<td>线路名称</td>
+				<td>杆塔号</td>
+				<td>安装方向</td>
+				<td>设备编号</td>
+				<td>SIM号</td>
+				<td>运行状态</td>
+				<td>安装日期</td>
+				<td>隐患类型</td>
+				<td>生产厂家</td>
+			</tr>
+		</thead>
+		
+	</table>
+</div>
+<script type="text/javascript">
+$(function() {
+	getData(1);
+})
+
+
+//请求页面所有数据
+function getData(page){
+	$
+	.ajax({
+		url : '../getDeviceList',
+		type : 'post',
+		data : {
+			'page' : page
+		},
+		dataType : 'json',
+		success : function(data) {
+			deviceFormat(data);
+		}
+	});
+}
+
+
+
+//解析集合数据
+function deviceFormat(data){
+
+
+	$
+			.each(
+					data,
+					function(k, v) {
+						var current = data.current;
+						var pages = data.pages;
+						var now = data.now;
+						var size = data.size;
+						var count = data.count;
+
+						$("#now").html(now);
+						$("#size").html(size);
+						$("#count").html(count);
+						$("#currentPage").html(current);
+						$("#pages").html(pages);
+						// 清空当前数据
+						$(".tbody").empty();
+						// alert(k);
+						if (k == 'list') {
+							$
+									.each(
+											v,
+											function(k2, v2) {
+
+												var id = v2.id;
+												var deviceNumber = v2.deviceNumber;
+												var iccId = v2.iccId;
+												var dangerType = v2.dangerType;
+												var description = v2.description;
+												var installDate = v2.installDate;
+												var installPerson = v2.installPerson;
+												var lineName = v2.line.lineName;
+												var towerName = v2.tower.towerName;
+												var manufacturer = v2.manufacturer;
+												var model = v2.model;
+												var phoneNumber = v2.phoneNumber;
+												var runType = v2.runType;
+												var viewAddress = v2.viewAddress;
+												//alert(id);
+												var tbody = "<tbody class='tbody' style='background:rgb(6, 47, 103); color:rgb(252, 193, 123)'><tr style='height:30px;'><td>"
+														+ (k2 + 1)
+														+ "</td><td>"
+														+ "西安博展"
+														+ "</td><td>"
+														+ "220kv"
+														+ "</td><td>"
+														+  lineName
+														+ "</td><td>"
+														+ towerName
+														+ "</td><td>"
+														+ viewAddress
+														+ "</td><td>"
+														+ phoneNumber
+														+ "</td><td>"
+														+ deviceNumber
+														+ "</td><td>"
+														+ runType
+														+ "</td><td>"
+														+ installDate
+														+ "</td><td>"
+														+ "山火"
+														+ "</td><td>"
+														+ manufacturer
+														+ "</td><td></tr></tbody>";
+												$("#tab")
+														.append(
+																tbody);
+											})
+						}
+					});
+
+
+}
+
+
+
+
+//分页查询
+$(function(){
+	$("#firstPage").on("click", function() {
+		var currentPageStr = $("#currentPage").text();//获取当前页数
+		var pagesStr = $("#pages").text();//获取总页数
+		var currentPage = parseInt(currentPageStr);
+		var pages = parseInt(pagesStr);
+		if (currentPage <= 1)
+			return false;
+		currentPage = 1;
+		getData(currentPage);
+	});
+	$("#prePage").on("click", function() {
+		var currentPageStr = $("#currentPage").text();//获取当前页数
+		var pagesStr = $("#pages").text();//获取总页数
+		var currentPage = parseInt(currentPageStr);
+		var pages = parseInt(pagesStr);
+		if (currentPage <= 1)
+			return false;
+		currentPage--;
+		getData(currentPage);
+	});
+$("#nextPage").on("click", function() {
+		
+		var currentPageStr = $("#currentPage").text();//获取当前页数
+		var pagesStr = $("#pages").text();//获取总页数
+		var currentPage = parseInt(currentPageStr);
+		var pages = parseInt(pagesStr);
+		if (currentPage >= pages)
+			return false;
+		currentPage ++;
+		getData(currentPage);
+	});
+	$("#lastPage").on("click", function() {
+		var currentPageStr = $("#currentPage").text();//获取当前页数
+		var pagesStr = $("#pages").text();//获取总页数
+		var currentPage = parseInt(currentPageStr);
+		var pages = parseInt(pagesStr);
+		if (currentPage >= pages)
+			return false;
+		currentPage = pages;
+		getData(currentPage);
+	});
+})
+
+
+</script>
+</body>
+</html>

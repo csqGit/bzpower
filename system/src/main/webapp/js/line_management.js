@@ -101,6 +101,9 @@ $(function() {
 		var el = $("[class='other']input[name='endLine']").val();
 		var tow = $("[class='other']input[name='towerNumber']").val();
 		var vol = $("[class='other']input[name='voltageGrade']").val();
+		var towerNumber = $("[class='other']input[name='towerNumber']").val();
+		
+		var num = parseInt(towerNumber);
 		if(com == ""){
 			alert("公司名称不能为空！");
 			return false;
@@ -111,6 +114,10 @@ $(function() {
 		}
 		if(line == ""){
 			alert("线路名称不能为空！");
+			return false;
+		}
+		if(isNaN(num)){
+			alert("线路数量必须为数字！");
 			return false;
 		}
 		$("#lineForm").submit();
