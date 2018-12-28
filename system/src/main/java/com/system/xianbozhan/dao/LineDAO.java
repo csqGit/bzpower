@@ -16,7 +16,7 @@ public interface LineDAO {
 	/*
 	 * 查询线路名称
 	 */
-	public List<LineName> getLineName();
+	public List<Line> getLineName();
 	
 	/*
 	 * 根据id查询线路信息

@@ -1,6 +1,6 @@
 package com.system.xianbozhan.entity;
 
-public class LineName {
+public class LineName extends Line{
 	private Integer id;
 	private String lineName;
 	public Integer getId() {

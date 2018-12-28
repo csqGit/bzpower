@@ -18,6 +18,18 @@
 		$("#countCookie").html(countCookie);
 		$("#lxCookie").html(lxCookie);
 		
+		
+		//改变列表图片
+		$(".ul>li").hover(function(){
+			var obj = $(this).find('span').find('img');;
+			var src = obj.attr('src');
+			$(obj).attr('src', src.substring(0, src.length - 4) + '_hover.png');
+		},function(){
+			var obj = $(this).find('span').find('img');;
+			var src = obj.attr('src');
+			$(obj).attr('src', src.substring(0, src.length - 10) + '.png');
+		});
+		
 	})
 </script>
 </head>
@@ -48,7 +60,7 @@
 				<span>
 				<img class="cg" alt="" src="images/carousel.png">
 			</span>
-				<a href="view/carousel.html" target="iframe">&nbsp;图片展示&nbsp;</a>
+				<a href="view/carousel.html" target="iframe">&nbsp;图片轮播&nbsp;</a>
 					<!-- <ol class="nav_ul u2" style="position:relative; top:0px; left: 0px;">
 						<li class="l2" style="border-top: 1px dashed rgb(249, 193, 122);">
 							<a href="view/carousel.html" target="iframe">全部轮播</a>

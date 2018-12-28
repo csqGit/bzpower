@@ -1,7 +1,9 @@
 package com.system.xianbozhan.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.system.xianbozhan.entity.EntityPojo;
+import com.system.xianbozhan.entity.Line;
 import com.system.xianbozhan.entity.LineName;
 import com.system.xianbozhan.entity.Tower;
 import com.system.xianbozhan.entity.TowerName;
@@ -97,31 +100,35 @@ public class TowerController {
 		return object;
 	}
 	
-	
+	/*
+	 * 前台需要当前页数current，总页数pages，当前为第几条now结果至第几条结果，共有多少sum条结果，共需要5个参数
+	 */
+//	int current ;//当前页数
+//	int pages; //总页数
+//	int count; //总条数
+//	int now ; //当前为第几条
+//	int size ;//至第几条
 	@RequestMapping("getTowerByTowerAndOther")
 	@ResponseBody
 	public Object getTowerByTowerAndOther(String lineName, String towerName, String towerType) {
 		List<Tower> list = null;
-		List<LineName> line = line = lineService.getLineName();
+		Set<LineName> line = lineService.getLineName();
 		int lineId = 0;
-		for(int i = 0; i < line.size(); i ++) {
-			if(lineName != null && !"".equals(lineName) && lineName.equals(line.get(i).getLineName())) {
-				lineId = line.get(i).getId();
-				break;
-			}
-		}
-		list = towerService.getTowerByTowerAndOther(lineId, towerName, towerType);
+		Iterator<LineName> it = line.iterator();
 		
 		EntityPojo entity = new EntityPojo();
 		try {
-			/*
-			 * 前台需要当前页数current，总页数pages，当前为第几条now结果至第几条结果，共有多少sum条结果，共需要5个参数
-			 */
-//			int current ;//当前页数
-//			int pages; //总页数
-//			int count; //总条数
-//			int now ; //当前为第几条
-//			int size ;//至第几条
+			while(it.hasNext()) {
+				Line lineNa = it.next();
+				System.out.println(lineNa);
+				if(lineNa.getLineName().equals(lineName)) {
+					lineId = lineNa.getId();
+					break;
+				}
+			}
+			
+			list = towerService.getTowerByTowerAndOther(lineId, towerName, towerType);
+		
 			entity.setList(list);
 			entity.setCurrent(1);
 			entity.setPages(1);
@@ -138,31 +145,15 @@ public class TowerController {
 //	
 	@RequestMapping("addTower")
 	public void addTower(HttpServletResponse response ,Tower tower) {
-//		Tower tower = new Tower();
-//		List<LineName> line = line = lineService.getLineName();
-//		int lineId = 0;
-//		for(int i = 0; i < line.size(); i ++) {
-//			if(lineName != null && !"".equals(lineName) && lineName.equals(line.get(i).getLineName())) {
-//				lineId = line.get(i).getId();
-//			}
-//		}
-		
 		try {
-//			tower.setId(lineId);
-//			tower.setTowerName(towerName);
-//			tower.setTowerType(towerType);
-//			tower.setTowerAddress(towerAddress);
-//			tower.setInstallDate(installDate);
-//			tower.setRunDate(runDate);
 			towerService.addTower(tower);
 			response.sendRedirect("view/tower_management.html");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//return "redirect:getTower(1)";
 	}
-//	
-//	
+
+	
 	@RequestMapping("updateTower")
 	public void updateTower(HttpServletResponse response , Tower tower) {
 		try {
@@ -172,8 +163,8 @@ public class TowerController {
 			e.printStackTrace();
 		}
 	}
-//	
-//	
+
+	
 	@RequestMapping("deleteTower")
 	public void deleteTower(HttpServletResponse response , int id) {
 		try {

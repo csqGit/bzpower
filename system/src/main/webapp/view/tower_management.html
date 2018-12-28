@@ -5,6 +5,7 @@
 <title>杆塔管理界面</title>
 
 <link rel="stylesheet" type="text/css" href="../css/line_management.css" />
+<link rel="stylesheet" type="text/css" href="../css/tower_management.css" />
 <link rel="stylesheet" type="text/css"
 	href="../ui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../ui/themes/icon.css">
@@ -16,118 +17,10 @@
 <script type="text/javascript" src="../js/tower_management.js"></script>
 
 <style type="text/css">
-.tbody tr:hover{
-	background: rgb(4, 32, 79);
-}
-.tbody tr a:link{
-	text-decoration: none;
-	color:rgb(252, 193, 123);
-}
-.tbody tr a:visited{
-	color:rgb(252, 193, 123);
-}
-.tbody tr a:hover{
-	color: rgb(79, 231, 254)
-}
-#winTab{
-	width: 300px;
-	margin: 10px auto;
-}
-#winTab tr{
-	height: 50px;
-	font-size: 15px;
-	color: rgb(79, 231, 254);
-}
-#winTab tr td{
-	padding-left: 20px;
-}
-#winTab tr td input{
-	height: 30px;
-	background: rgb(6, 47, 103);
-	border: 1px solid rgb(79, 231, 254);
-	border-radius: 3px;
-	color: rgb(79, 231, 254);
-}
-.other{
-	padding-left: 10px;
-}
-#msg{
-	height: 30px;
-	width: 300px;
-	margin: 0 auto;
-	text-align:center;
-	line-height: 30px;
-	margin-top: -10px;
-	color: red;
-	font-size: 14px;
-}
-.sr{
-	position: relative;
-	left: 25%;
-	width: 50px;
-	height: 30px;
-	text-align: center;
-	color: rgb(79, 231, 254);
-	cursor: pointer;
-}
-.window{
-	background: rgb(0, 13, 48);
-}
-.panel-title{
-	color: rgb(79, 231, 254);
-}
-.panel-header, .panel-body{
-	
-}
-.panel-body{
-	background: rgb(0, 60, 133);
-	color: rgb(79, 231, 254);
-}
 
-#lineName{
-	position: relative;
-	top: -50px;
-	left: 85px;
-	width: 146px;
-	height: 30px;
-	border: 1px solid rgb(79, 231, 254);
-	border-radius: 3px;
-	background: rgb(4, 32, 79);
-	color: white;
-}
-
-#sl{
-	width: 180px;
-	height: 30px;
-	border: 1px solid rgb(79, 231, 254);
-	border-radius: 3px;
-	background: rgb(4, 32, 79);
-	color: rgb(79, 231, 254);
-}
 </style>
 <script type="text/javascript">
-$(function(){
-	$(".combo").css({
-		'width' : '180px',
-		'height' : '30px',
-		'border' : '1px solid rgb(79, 231, 254)',
-		'background' : 'rgb(4, 32, 79)',
-		'border-radius' : '3px'
-	});
-	$(".combo-arrow").css({
-		'height' : '30px'
-	});
-	$("[id='cc'][class='easyui-combobox']").css({
-		'height' : '30px',
-		'border' : '0'
-	});
-	$("[autocomplete='off']").css({
-		'width' : '158px',
-		'height' : '30px',
-		'border' : 'none'
-	});
-	
-})
+
 </script>
 </head>
 <body>
@@ -180,7 +73,7 @@ $(function(){
 	     			<tr><td>线路名称</td>
 	     				<td>
 	     					<input id="cc" class="easyui-combobox" name="line_id.id"   
-    data-options="valueField:'id',textField:'lineName',url:'../getLineName'" /> 
+    data-options="valueField:'id',textField:'lineName',url:'../getLineName'" value="" /> 
 	     				</td>
 	     			</tr>
 	     			<tr><td>杆塔名称</td><td>
@@ -193,10 +86,10 @@ $(function(){
 	     				<input class="other" type="text" name="towerAddress">
 	     			</td></tr>
 	     			<tr><td>安装日期</td><td>
-	     				<input id="dd" type="text" class="easyui-datebox other" required="required" name="installDate"></input>  
+	     				<input id="dd" type="text" class="easyui-datebox other" pro='date1' required="required" value='' name="installDate"></input>  
 	     			</td></tr>
 	     			<tr><td>投运日期</td><td>
-	     				<input id="dd" type="text" class="easyui-datebox other" required="required" name="runDate"></input> 
+	     				<input id="dd" type="text" class="easyui-datebox other" pro='date2' required="required" value='' name="runDate"></input> 
 	     			</td></tr>
 	     			
 	     			<tr>

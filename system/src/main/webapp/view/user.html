@@ -17,6 +17,15 @@
 	#tab tr{
 		border-bottom: 1px;
 	}
+	#page_left span{
+		background: rgb(0, 60, 133);
+		padding: 3px 15px;
+	}
+	#page_left span:hover{
+		background: rgb(0, 60, 170);
+		
+	color: rgb(79, 231, 254);
+	}
 </style>
 
 </head>
@@ -26,7 +35,7 @@
 			<div class="left_top">
 				<span>用户管理-用户信息</span>
 				<div class="left_earch">
-					用户名：<input style="background:rgb(4,32,79); border: 1px solid rgb(36, 78, 153)" id="username" type="text" name="username"> <input
+					用户名：<input style="background:rgb(4,32,79); color: rgb(79, 231, 254); padding-left: 10px; border: 1px solid rgb(36, 78, 153)" id="username" type="text" name="username"> <input
 						id="but" class="myBut" type="button" value="查询">
 				</div>
 			</div>
@@ -55,10 +64,12 @@
 					id="cou"></font>条结果</span>
 					<div
 						style="width: 1330px; height: 50px; border-bottom: 1px solid rgb(8, 35, 69);">
-						<div id="page_left">
-							<font id="first">首页</font> <font id="prePage">上一页</font> <font
-								id="currentPage"></font>/<font id="pages"></font> <font
-								id="nextPage">下一页</font> <font id="lastPage">尾页</font>
+						<div id="page_left" style="width: 400px; position: relative; left: 40%;">
+							<span><font id="first">首页</font></span>
+						<span> <font id="prePage">上一页</font></span>
+							 <span> <font id="currentPage"></font>/<font id="pages"></font></span>
+							<span><font id="nextPage">下一页</font></span>
+								<span> <font id="lastPage">尾页</font></span>
 						</div>
 						<div id="page_right">
 							<span id="flush">刷新</span><span id="add">添加</span>

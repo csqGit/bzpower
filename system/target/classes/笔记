@@ -61,9 +61,20 @@ jQuery知识：
 1、设置定时器：setInterval(fun, time, param);//参数分别是函数，时间，参数
 	语法： var setInt = setInterval(fun, time, param);
 		
-		
-		
-		
+2、字符串截取
+	1）substr:截取字符串后缀
+		var suffix = str.substr(str.lastIndexOf('.'))		
+	2) join()
+		var arr = new Array('a' 'b' 'c' 'd')
+		var newArr = arr.join(' ')
+		结果为： a b c d
+	3) substring(startSub, endSub)从第几个开始截取，到第几个
+	4） indexOf(): 得到截取字符串的索引
+		var test = javascript
+		var x = test.indexOf('v');//返回值为2
+	5） split()方法： 根据指定字符截取字符串
+			
+			
 		
 		
 		

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -58,13 +59,15 @@ public class LineController {
 	@RequestMapping("getLineName")
 	@ResponseBody
 	public Object getLineName() {
-		List<LineName> line = null;
+		Set<LineName> line = null;
 		try {
 			 line = lineService.getLineName();
+			 System.out.println(line);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		Object obj = JSONObject.toJSON(line);
+		System.out.println(obj);
 		return obj;
 	}
 	

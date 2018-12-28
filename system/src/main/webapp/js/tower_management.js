@@ -124,12 +124,12 @@ function getTowerById(id){
 			var line_id = v2.line_id.id;
 			var lineName = v2.line_id.lineName;
 			$("[class='other']input[name='id']").attr('value', id);
-			$("[class='other']input[name='line_id.id']").attr('value', lineName);
+			$("[class='easyui-combobox'][id='cc']").attr('value', lineName);
 			$("[class='other']input[name='towerName']").attr('value', towerName);
 			$("[class='other']input[name='towerType']").attr('value', towerType);
 			$("[class='other']input[name='towerAddress']").attr('value', towerAddress);
-			$("[class='other']input[name='installDate']").attr('value', installDate);
-			$("[class='other']input[name='runDate']").attr('value', runDate);
+			$("[id='dd'][pro='date1'][name='installDate']").attr('value', installDate);
+			$("[id='dd'][pro='date2']").attr('value', runDate);
 			$("[class='other']input[name='line_id.id']").attr('value', lineName);
 		}
 	});
@@ -269,4 +269,29 @@ $("#nextPage").on("click", function() {
 		currentPage = pages;
 		getTower(currentPage);
 	});
+})
+
+
+
+$(function(){
+	$(".combo").css({
+		'width' : '180px',
+		'height' : '30px',
+		'border' : '1px solid rgb(79, 231, 254)',
+		'background' : 'rgb(4, 32, 79)',
+		'border-radius' : '3px'
+	});
+	$(".combo-arrow").css({
+		'height' : '30px'
+	});
+	$("[id='cc'][class='easyui-combobox']").css({
+		'height' : '30px',
+		'border' : '0'
+	});
+	$("[autocomplete='off']").css({
+		'width' : '158px',
+		'height' : '30px',
+		'border' : 'none'
+	});
+	
 })

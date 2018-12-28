@@ -19,7 +19,7 @@
 		
 		<!-- 配置数据源 -->
 		<!-- destroy-method的作用为： 数据库不适用的时候，把连接放到连接池中，供下次使用 -->
-		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="closed">
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 			<property name="driverClass" value="${jdbc.driverClass}" />
 			<property name="jdbcUrl" value="${jdbc.jdbcUrl}" />
 			<property name="user" value="${jdbc.username}" />

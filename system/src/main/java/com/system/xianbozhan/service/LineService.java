@@ -1,6 +1,7 @@
 package com.system.xianbozhan.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -16,7 +17,7 @@ public interface LineService {
 	/*
 	 * 查询线路名称
 	 */
-	public List<LineName> getLineName();
+	public Set<LineName> getLineName();
 	
 	/*
 	 * 根据id查询线路信息

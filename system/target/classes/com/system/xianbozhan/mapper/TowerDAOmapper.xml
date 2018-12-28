@@ -52,7 +52,7 @@
 		l.towerNumber from tower t, line l where t.line_id = l.id 
 		
 			<if test="lineId != 0">
-				and lind_id = #{lineId}
+				and t.line_id = #{lineId}
 			</if>
 			<if test="towerName != '' and towerName != null">
 				and towerName = #{towerName}

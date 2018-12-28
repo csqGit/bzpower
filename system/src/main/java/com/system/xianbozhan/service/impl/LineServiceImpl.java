@@ -1,6 +1,8 @@
 package com.system.xianbozhan.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +24,16 @@ public class LineServiceImpl implements LineService{
 		return lineDAO.getLineList(start, current);
 	}
 	
-	public List<LineName> getLineName() {
-		// TODO Auto-generated method stub
-		return lineDAO.getLineName();
+	public Set<LineName> getLineName() {
+		List<Line> list = lineDAO.getLineName();
+		Set<LineName> lineNameList = new HashSet<LineName>();
+		for(Line l : list) {
+			LineName lineName = new LineName();
+			lineName.setId(l.getId());
+			lineName.setLineName(l.getLineName());
+			lineNameList.add(lineName);
+		}
+		return lineNameList;
 	}
 
 	public Line getLineById(int id) {

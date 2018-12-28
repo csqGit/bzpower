@@ -39,7 +39,8 @@ public class UserLoginController {
 				cook = new Cookie("msg", msg);
 				resp.addCookie(cook);
 				//return "login.html";
-				resp.sendRedirect("index.html");
+				resp.sendRedirect("login.html");
+				return ;
 			}else {
 				admin = userLoginService.login(username, password);
 				if(admin == null) {
@@ -49,11 +50,12 @@ public class UserLoginController {
 					resp.addCookie(cook);
 					//return "login.html";
 					resp.sendRedirect("login.html");
+					return;
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg = "登录失败!!!";
+			//msg = "登录失败!!!";
 			cook = new Cookie("msg", msg);
 			resp.addCookie(cook);
 			//return "login.html";
@@ -63,9 +65,13 @@ public class UserLoginController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			return ;
 		}
-		req.getSession().setAttribute("admin", admin);
-		Cookie name = new Cookie("name", admin.getName());
+		//req.getSession().setAttribute("admin", admin);
+		String na = "";
+		if(admin != null)
+			na = admin.getName();
+		Cookie name = new Cookie("name", na);
 		//name.setMaxAge(30000);//30分钟自动销毁cookie
 		//当管理员登陆时，累计次数加1
 		count ++;
@@ -87,6 +93,7 @@ public class UserLoginController {
 		System.out.println("离线数：" + (num - count));
 		try {
 			resp.sendRedirect("index.html");
+			return ;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

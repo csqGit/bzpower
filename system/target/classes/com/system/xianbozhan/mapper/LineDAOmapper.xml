@@ -10,11 +10,11 @@
 		select * from line where id = #{id}
 	</select>
 	
-	<select id="getLineName" resultType="com.system.xianbozhan.entity.LineName">
-		select * from lineName
+	<select id="getLineName" resultType="com.system.xianbozhan.entity.Line">
+		select * from line
 	</select>
 	
-	<select id="getLineBylineNameAndOther" parameterType="java.lang.String" resultType="com.system.xianbozhan.entity.Line">
+	<select id="getLineBylineNameAndOther" resultType="com.system.xianbozhan.entity.Line">
 		select * from line 
 		<where>
 			<if test="companyName != null and companyName != ''">
@@ -34,7 +34,7 @@
 	</select>
 	
 	<insert id="addLine" parameterType="com.system.xianbozhan.entity.Line">
-		insert into line values(#{id}, #{lineName}, #{companyName}, ${voltageGrade}, #{beginLine}, #{endLine}, #{towerNumber})
+		insert into line values(#{id}, #{lineName}, #{companyName}, #{voltageGrade}, #{beginLine}, #{endLine}, #{towerNumber})
 	</insert>
 	
 	<update id="updateLine" parameterType="com.system.xianbozhan.entity.Line">

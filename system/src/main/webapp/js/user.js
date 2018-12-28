@@ -237,6 +237,7 @@ function updateUser(id){
 			'id' : id,
 		},
 		success : function(data){
+			alert(data);
 			var obj = eval(data);
 			$.each(obj,function(k, value) {
 						var trs = "";
@@ -264,6 +265,7 @@ function updateUser(id){
 												weChat = v.weChat;
 												weChatName = v.weChatName;
 												enterpriseNumber = v.enterpriseNumber;
+												
 												id = v.id;
 												$("input[name='company'").attr('value', company);
 												$("#dept2").attr('value', department);

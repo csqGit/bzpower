@@ -114,18 +114,20 @@
 	bottom: 20px;
 }
 #page_left {
+	/* color: rgb(252, 193, 123); */
 	float: left;
 }
 
 #page_left font {
 	cursor: pointer;
-	padding: 0 5px;
 }
 
 #page_right {
 	float: right;
 }
-
+#page_left span{
+	
+}
 #page_right span {
 	display: block;
 	border: 1px solid rgb(36, 78, 153);
@@ -137,14 +139,14 @@
 }
 #page_right span:hover{
 	background: rgb(0, 39, 118);
-	color: rgb(252, 193, 123)
+	color: rgb(79, 231, 254);
 }
 
 #page_left, #page_right {
 	width: 280px;
 	height: 35px;
 	line-height: 35px;
-	color: rgb(79, 231, 254);
+	color: rgb(252, 193, 123);
 	margin-top: 10px;
 }
 #win{
