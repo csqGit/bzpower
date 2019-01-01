@@ -15,4 +15,6 @@ public interface NewInfoService {
 	 * 得到新闻类型列表信息
 	 */
 	public List<NewType> getNewTypeList();
+	
+	public List<NewInfo> getNewInfoList(int startPosition);
 }

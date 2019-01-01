@@ -11,13 +11,472 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>陇东学院后勤管理</title>
 
+
 <!-- layui的css -->
 <link rel="stylesheet" href="layui/css/layui.css" media="all">
-<link rel="stylesheet" href="css/index.css" type="text/css">
+<link rel="stylesheet" href="<%=path %>/css/index.css" type="text/css">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script src="layui/layui.js" charset="utf-8"></script>
 <script src="js/index.js" charset="utf-8"></script>
 <style type="text/css">
+
+* {
+	margin: 0px;
+	padding: 0;
+	font-size: 15px;
+	list-style-type: none;
+}
+
+.head {
+	width: 100%;
+	height: 80px;
+	background: black;
+	position: fixed;
+	top:0;
+	z-index: 1000;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.head-img {
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin-top: 20px;
+	margin-left: 100px;
+	float: left;
+}
+
+#logo, .head-li li {
+	color: white;
+	text-align: center;
+}
+
+#test1 {
+	position: relative;
+	top: 90px;
+	width: 1200px;
+	height: 200px;
+	margin: 0 auto;
+}
+
+#logo {
+	display: block;
+	float: left;
+	color: white;
+	height: 80px;
+	line-height: 80px;
+	font-size: 30px;
+	padding-left: 20px;
+}
+
+.head-li {
+	width: 600px;
+	height: 80px;
+	margin-left: 50px;
+	line-height: 80px;
+	float: left;
+}
+
+.head-li a:link {
+	font-size: 20px;
+	color: white;
+}
+
+.head-li a:visited {
+	color: white;
+}
+
+.head-li a:hover {
+	color: orange;
+	transaction: font-size 0.2s, color 0.5s;
+}
+
+.head-li li {
+	width: 100px;
+	height: 80px;
+	color: white;
+	margin-left: 10px;
+	float: left;
+}
+
+.new, .repair, .eatery, .service, .copy {
+	position: relative;
+	top: 80px;
+}
+
+.new {
+	width: 1200px;
+	height: 300px;
+	margin: 0 auto;
+}
+
+.new-top {
+	width: 100%;
+	height: 30px;
+	border-bottom: 2px solid orange;
+	
+}
+
+.new-top-left {
+	width: 100px;
+	height: 30px;
+	line-height: 40px;
+	float: left;
+	
+}
+
+.new-top-right {
+	width: 50px;
+	height: 30px;
+	line-height: 40px;
+	float: right;
+}
+
+.new-left {
+	width: 370px;
+	height: 260px;
+	margin-top: 10px;
+	border: 1px solid rgb(234, 234, 234);
+	float: left;
+}
+
+
+
+.new-left-one {
+	height: 220px;
+	background: rgb(25, 158, 216);
+}
+
+.new-left-two {
+	height: 40px;
+	background: #ebebeb;
+}
+
+/* .new-left-three {
+	height: 60px;
+	background: rgb(251, 251, 251);
+	margin-top: 5px;
+	margin: 0 auto;
+}
+ */
+.more-new {
+	position: relative;
+	top: 10px;
+	display: block;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border: 1px solid #D58512;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.new-box {
+	display: block;
+	width: 100%;
+	height: 30;
+	line-height: 30px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.new-right {
+	width: 800px;
+	height: 260px;
+	border: 1px solid rgb(234, 234, 234);
+	margin-top: 10px;
+	float: right;
+}
+
+
+/*repair start*/
+.repair {
+	width: 1200px;
+	height: 610px;
+	margin: 0 auto;
+}
+
+.repair-left {
+	width: 1200px;
+	height: 360px;
+}
+
+.repair-left-one {
+	width: 230px;
+	height: 170px;
+	margin: 5px;
+	float: left;
+}
+
+.one {
+	background: #199ed8;
+}
+
+.two {
+	background: rgba(255, 153, 51);
+}
+
+.three {
+	background: rgba(0, 195, 173);
+}
+
+.four {
+	background: rgba(186, 120, 230);
+}
+
+.five {
+	background: rgba(148, 148, 148);
+}
+
+.six {
+	background: rgba(148, 148, 148);
+}
+
+.seven {
+	background: rgba(148, 148, 148);
+}
+
+.eight {
+	background: rgba(148, 148, 148);
+}
+
+.nine {
+	background: rgba(148, 148, 148);
+}
+
+.ten {
+	background: rgba(148, 148, 148);
+}
+
+.img {
+	width: 120px;
+	height: 90px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.img-a {
+	position: relative;
+	top: -120px;
+	display: block;
+	width: 234px;
+	height: 40px;
+	text-align: center;
+	padding-top: 130px;
+	color: white;
+}
+
+.repair-but {
+	width: 1200px;
+	height: 240px;
+	clear: both;
+	margin-top: 10px;
+}
+
+.repair-but-left {
+	width: 370px;
+	float: left;
+}
+
+.repair-but-one {
+	width: 370px;
+	height: 100px;
+	background: rgb(25, 158, 216);
+	margin: 0 auto;
+	line-height: 100px;
+}
+
+.repair-but-two {
+	width: 370px;
+	height: 90px;
+	background: #ebebeb;
+	margin: 0 auto;
+	line-height: 60px;
+}
+
+.repair-but-three {
+	width: 370px;
+	height: 50px;
+	background: rgb(251, 251, 251);
+	margin: 0 auto;
+}
+
+.more-repair {
+	position: relative;
+	top: 8px;
+	display: block;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid #D58512;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.repair-box {
+	display: block;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.repair-but-right {
+	width: 800px;
+	border-left: 1px solid rgb(234, 234, 234);
+	float: right;
+}
+
+.title {
+	display: block;
+	float: left;
+	padding: 15px 0 0 15px;
+}
+
+.span {
+	display: block;
+	padding-left: 60px;
+}
+/*eatery食堂 start*/
+.eatery {
+	width: 1200px;
+	height: 200px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.eatery-info {
+	width: 288px;
+	height: 200px;
+	border: 1px solid rgb(234, 234, 234);
+	margin-left: 12px;
+	float: left;
+}
+
+.info {
+	margin-left: 0;
+}
+
+.info-top {
+	width: 258px;
+	height: 50px;
+	padding-left: 20px;
+	font-size: 20px;
+	line-height: 50px;
+	border-bottom: 2px solid rgb(186, 120, 230);
+}
+
+.info-top-li {
+	width: 288px;
+	height: 150px;
+}
+
+.info-top-li li {
+	height: 29px;
+	border-bottom: 1px dashed rgb(234, 234, 234);
+	line-height: 30px;
+	padding-left: 20px;
+}
+
+.info-but {
+	width: 100%;
+	height: 160px;
+}
+
+.info-but-box {
+	position: relative;
+	top: 10px;
+	width: 240px;
+	height: 60px;
+	background: rgb(234, 234, 234);
+	margin: 0 auto;
+	line-height: 60px;
+	font-size: 18px;
+}
+
+.box {
+	margin-top: 10px;
+}
+
+/*智慧后勤信息*/
+.service {
+	width: 1200px;
+	height: 240px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.service-left {
+	width: 430px;
+	height: 235px;
+	float: left;
+}
+
+.service-info {
+	width: 210px;
+	height: 235px;
+	border: 1px solid rgb(235, 234, 234);
+	margin-left: 5px;
+	float: left;
+}
+
+.service-info-top {
+	height: 50px;
+	font-size: 20px;
+	padding-left: 20px;
+	line-height: 50px;
+	background: rgb(251, 251, 251);
+}
+
+.service-info-li {
+	height: 185px;
+}
+
+.service-info-li li {
+	height: 30px;
+	line-height: 30px;
+	padding-left: 20px;
+	border-bottom: 1px solid rgb(234, 234, 234);
+}
+
+.service-map {
+	position:relative;
+	top:-5px;
+	left:-10px;
+	width: 750px;
+	height: 240px;
+	float: right;
+}
+
+.nav {
+	display: block;
+	float: left;
+	margin: 10px 10px 0 -10px;
+}
+
+/*版权*/
+.copy {
+	width: 1200px;
+	height: 100px;
+	padding: 10px;
+	background: rgb(234,234,234);
+	margin: 0 auto;
+}
+
+.copy p {
+	width: 800px;
+	height: 33px;
+	margin: 0 auto;
+	text-align: center;
+	color: gray;
+}s
 .layui-table, .layui-table-view {
 	margin: 0;
 }
@@ -85,13 +544,39 @@
 .btn:hover {
 	background-color: rgba(0, 0, 0, .7);
 }
+table tr{
+	text-align: center;
+	height: 35px;
+}
+#newTab{
+	border: none;
+}
+.page{
+	width: 620px;
+	height: 35px;
+	margin: 5px auto;
+}
+.page li{
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	border: 1px solid rgb(242, 242, 242);
+	float: left;
+}
+.page li span{
+	display: block;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
 </style>
 <script type="text/javascript">
 //定义全局变量和定时器
 var i = 0 ;
 var timer;
  
-$(document).ready(function(){
+$(function(){
   //用jquery方法设置第一张图片显示，其余隐藏
   $('.ig').eq(0).show().siblings('.ig').hide();
    
@@ -162,12 +647,111 @@ function Show(){
    * .bg{ background-color: #f00; }
    * */
 }
+
+$(function(){
+	$.ajax({
+		url : 'getNewInfo',
+		type : 'post',
+		success : function(data){
+			
+		}
+		
+	});
+})
+</script>
+
+<script type="text/javascript">
+	$(function(){
+		getNewInfo(1);
+	})
+	
+	//请求页面数据
+	function getNewInfo(page){
+		$.ajax({
+			url : 'getNewInfoList',
+			type : 'post',
+			data : {
+				'page' : page
+			},
+			dataType : 'json',
+			success : function(data){
+				formatNewInfo(data);
+			}, 
+			error : function(data){
+				//alert(1);
+			}
+		});
+	}
+	
+	//解析新闻信息函数
+	function formatNewInfo(data){
+		//首先清空原有的数据
+		$(".trBg").empty();
+		$.each(data, function(k1, v1){
+			var id = v1.id;
+			var title = v1.title;
+			var author = v1.author;
+			var time = v1.time;
+			var newType = v1.type.typeName;
+			var newInfo = "<tbody class='trBg'><tr height='30'><td width='10%'>"
+			+ id 
+			+ "</td><td width='20%'>"
+			+ title
+			+ "</td><td width='20%'>"
+			+ newType
+			+ "</td><td width='15%'>"
+			+ time 
+			+ "</td><td width='15%'>" 
+			+ author
+			+ "</td><td width='10%'>"
+			+ "<a href='javascript:void(0)' onclick='newInfo("+ id +")'>查看详情"
+			+ "</a></td></tr></tbody>";
+			$("#newTab").append(newInfo);
+		})
+	}
+	
+	function getNewById(id){
+		//alert(id);
+	}
+	
+	$(function(){
+		var currentPageStr = $("#currentPage").html();
+		var pagesStr = $("#pages").html();
+		var currentPage = parseInt(currentPageStr);
+		var pages = parseInt(pagesStr);
+		$("#firstPage").on('click', function(){
+			if(currentPage == 1)
+				return false;
+			currentPage = 1;
+			getNewInfo(currentPage);
+		});
+		$("#prePage").on('click', function(){
+			if(currentPage == 1)
+				return false;
+			currentPage --;
+			getNewInfo(currentPage);
+		});
+		$("#nextPage").on('click', function(){
+			if(currentPage == pages)
+				return false;
+			currentPage ++;
+			getNewInfo(currentPage);
+		});
+		$("#lastPage").on('click', function(){
+			if(currentPage == pages)
+				return false;
+			currentPage = pages;
+			getNewInfo(currentPage);
+		});
+	})
+	
+	
 </script>
 </head>
 <body>
 	<!-- head start -->
 	<div class="head">
-		<img alt="" src="<%=path %>/images/u19.png" class="head-img" /><span
+		<img alt="" src="images/u19.png" class="head-img" /><span
 			id="logo">陇东学院后勤保障处</span>
 		<ul class="head-li">
 			<li><a href="http://www.ldxy.edu.cn">学校首页</a></li>
@@ -213,39 +797,51 @@ function Show(){
 
 				<div class="layui-carousel" id="test3">
 					<div carousel-item="">
-						<c:forEach items="${picUrl }" var="pic">
+						
 							<div style="width: 370px; cursor: pointer;">
-								<img alt="" width="370" height="300"
-									src="<%=path %>/images/lbimages/${pic.picUrl }">
+								<img alt=""
+				src="<%=path %>/images/lbimages/lb2.jpg">
+								<img alt=""
+				src="<%=path %>/images/lbimages/lb2.jpg">
+								<img alt=""
+				src="<%=path %>/images/lbimages/lb2.jpg">
 							</div>
-						</c:forEach>
+						
 					</div>
 				</div>
 
 
 			</div>
 			<div class="new-left-two">
-				<span class="new-box"><a href="#">共有<span id="count">${newCount }</span>条新闻
-				</a></span> <span class="new-box"><a href="#">新闻${newCount }条，公告${newCount }条</a></span>
+				<span class="new-box">此处为新闻图片相对应的介绍</span>
 			</div>
-			<div class="new-left-three">
-				<span class="more-new"><a href="#">更多新闻</a></span>
-			</div>
+			<!-- <div class="new-left-three">
+				<span class="more-new"><a href="javascript:void(0)">更多新闻</a></span>
+			</div> -->
 		</div>
 		<div class="new-right">
 			<!-- <table class="layui-hide" id="test"></table> -->
-			<table width="700" border="1" cellpadding="0" cellspacing="0">
-				<%-- <c:forEach items="${newInfo }" var="new" varStatus="current">
-					<tr>
-						<td>${current.index + 1 }</td>
-						<td>${new.title }</td>
-						<td>${new.type.typeName }</td>
-						<td>${new.time }</td>
-						<td>${new.author }</td>
-					</tr>
+			<table id="newTab" width="800" border="1" cellpadding="0" cellspacing="0" align="center">
+				<thead>
+				<tr align="center" style="background:rgb(242, 242, 242)" height='40'>
+					<td>编号</td>
+					<td>新闻标题</td>
+					<td>新闻类型</td>
+					<td>发布日期</td>
+					<td>作者</td>
+					<td>详情</td>
+				</tr>
+				</thead>
 				
-				</c:forEach> --%>
 			</table>
+			<ul class="page">
+				<li><font></font><span id="firstPage">首页</span></li>
+				<li><span id="prePage">上一页</span></li>
+				<li><span id="nextPage">下一页</span></li>
+				<li><span id="lastPage">尾页</span></li>
+				<li><span>当前页数<font id="currentPage">1</font></span></li>
+				<li><span>总页数<font id="pages">2</font></span></li>
+			</ul>
 		</div>
 	</div>
 

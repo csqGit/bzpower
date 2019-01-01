@@ -12,6 +12,8 @@ public interface NewInfoDAO {
 	 */
 	public List<NewInfo> getNewInfoList(int startPosition, String type);
 	
+	public List<NewInfo> getNewInfoList(int startPosition, int maxPosition);
+	
 	/*
 	 * 得到新闻类型列表信息
 	 */

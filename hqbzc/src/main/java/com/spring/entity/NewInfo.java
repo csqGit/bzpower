@@ -50,6 +50,11 @@ public class NewInfo {
 	public void setNewSrc(String newSrc) {
 		this.newSrc = newSrc;
 	}
+	@Override
+	public String toString() {
+		return "NewInfo [id=" + id + ", title=" + title + ", type=" + type + ", time=" + time + ", author=" + author
+				+ ", newSrc=" + newSrc + "]";
+	}
 	
 	
 

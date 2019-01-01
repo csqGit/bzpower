@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -39,6 +40,24 @@ public class NewInfoDAOImpl implements NewInfoDAO {
 		List<NewType> list = null;
 		try {
 			list = session.createQuery(hql).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return list;
+	}
+
+
+	public List<NewInfo> getNewInfoList(int startPosition, int maxResult) {
+		Session session = sessionFactory.openSession();
+		String hql = "from NewInfo" ;
+		
+		List<NewInfo> list = null;
+		try {
+			Query query = session.createQuery(hql);
+			query.setFirstResult(startPosition);
+			query.setMaxResults(maxResult);
+			list = query.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

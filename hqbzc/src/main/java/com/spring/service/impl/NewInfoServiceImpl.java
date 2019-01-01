@@ -13,17 +13,24 @@ import com.spring.service.NewInfoService;
 @Service
 public class NewInfoServiceImpl implements NewInfoService{
 	
+	private static int current = 5;
+	
 	@Autowired
-	private NewInfoDAO NewInfoDAOImpl;
+	private NewInfoDAO newInfoDAOImpl;
 
 	public List<NewInfo> getNewInfoList(int startPosition, String type) {
 		
-		return NewInfoDAOImpl.getNewInfoList(startPosition, type);
+		return newInfoDAOImpl.getNewInfoList(startPosition, type);
 	}
 
 	public List<NewType> getNewTypeList() {
 		
-		return NewInfoDAOImpl.getNewTypeList();
+		return newInfoDAOImpl.getNewTypeList();
+	}
+
+	public List<NewInfo> getNewInfoList(int startPosition) {
+		int start = (startPosition - 1) * current;
+		return newInfoDAOImpl.getNewInfoList(start, current);
 	}
 
 }

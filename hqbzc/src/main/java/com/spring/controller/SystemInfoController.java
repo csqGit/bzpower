@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.spring.entity.ApplyClass;
 import com.spring.entity.FreeClass;
 import com.spring.entity.InterIdea;
@@ -37,30 +38,41 @@ public class SystemInfoController {
 	
 	
 //	@RequestMapping("/getSystemInfo")
-	public void getSystemInfo(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession session = req.getSession();
-		// 得到网站导航信息
-		List<SystemInfo> list = systemInfoService.getSystemInfo();
-		session.setAttribute("system", list);
-
-		// 得到网络调查的详细信息
-		List<InterIdea> interIdea = systemInfoService.getInterIdea();
-		session.setAttribute("interIdea", interIdea);
-
-		// 得到轮播图片路径
-		List<PictureInfo> url = systemInfoService.getPicUrl();
-		session.setAttribute("picUrl", url);
-		try {
-			resp.getWriter().write("success");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		//保存新闻路径
-		session.setAttribute("newInfo", newInfoService.getNewInfoList(1, null));
-		System.out.println(newInfoService.getNewInfoList(1, "1"));
-//		return "index";
-	}
+//	public void getSystemInfo(HttpServletRequest req, HttpServletResponse resp) {
+//		HttpSession session = req.getSession();
+//		// 得到网站导航信息
+//		List<SystemInfo> list = systemInfoService.getSystemInfo();
+//		session.setAttribute("system", list);
+//
+//		// 得到网络调查的详细信息
+//		List<InterIdea> interIdea = systemInfoService.getInterIdea();
+//		session.setAttribute("interIdea", interIdea);
+//
+//		// 得到轮播图片路径
+//		List<PictureInfo> url = systemInfoService.getPicUrl();
+//		session.setAttribute("picUrl", url);
+//		try {
+//			resp.getWriter().write("success");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		//保存新闻路径
+//		//session.setAttribute("newInfo", newInfoService.getNewInfoList(1, null));
+//		System.out.println(newInfoService.getNewInfoList(1, "1"));
+////		return "index";
+//	}
+	
+	/*
+	 * 得到新闻信息
+	 */
+//	@RequestMapping("getNewInfo")
+//	public void getNewInfo(HttpServletRequest request) {
+//		HttpSession session = request.getSession();
+//		session.setAttribute("newInfo", newInfoService.getNewInfoList(1, null));
+//		System.out.println(newInfoService.getNewInfoList(1, "1"));
+//		
+//	}
 
 	/*
 	 * 申请教室
