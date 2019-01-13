@@ -18,42 +18,8 @@
 <script type="text/javascript" src="<%=path%>/js/jquery-3.3.1.min.js"></script>
 <script src="<%=path%>/layui/layui.js" charset="utf-8"></script>
 <link rel="stylesheet" href="<%=path%>/css/public.css" type="text/css">
-<link rel="stylesheet" href="<%=path%>/css/page/class.css"
+<link rel="stylesheet" href="<%=path%>/css/page/saveClass.css"
 	type="text/css">
-
-<style type="text/css">
-
-</style>
-
-<script type="text/javascript">
-	//展示申请信息
-	$(function() {
-		//展示教室信息
-		$(".show_classroom").click(function() {
-			//设置表单展示信息
-			$(".layui-form").css('display', 'none');
-			$("#show").css('display', 'block');
-
-			$.ajax({
-				url : '../getApplyClass',
-				type : 'post',
-				success : function(data) {
-					if (!data) {
-						alert(data);
-					}
-				}
-			});
-		});
-
-		//申请教室
-		$(".apply_classroom").click(function() {
-			//设置表单展示信息
-			$(".layui-form").css('display', 'block');
-			$("#show").css('display', 'none');
-
-		});
-	});
-</script>
 
 <script>
 		layui.use('laydate', function() {
@@ -76,40 +42,12 @@
 	<!-- head start -->
 	<jsp:include page="../top.jsp"></jsp:include>
 	<!-- head end -->
-
-	<span id="return"><a href="<%=path%>/index.jsp">返回首页</a></span>
 	<!-- 查看教室申请信息 -->
 	<div id="box">
-		<div id="top">
-			<div class="apply_classroom">申请教室</div>
-			<div class="show_classroom">查看申请信息</div>
-		</div>
-
-		<!-- 展示申请信息 -->
-		<div id="show">
-			<table id="tb" width="500" border="1">
-				<tr align="center" height="40px">
-					<td>申请人</td>
-					<td>申请教室</td>
-					<td>申请时间</td>
-					<td>审核状态</td>
-				</tr>
-				<c:forEach items="${applyClass }" var="applyClass">
-					<tr align="center" height="40px">
-						<td>${applyClass.applyName }</td>
-						<td>${applyClass.applyClassAddress }</td>
-						<td>${applyClass.applyTime }</td>
-						<c:if test="${applyClass.applyState==0 }">
-							<td>未通过</td>
-						</c:if>
-						<c:if test="${applyClass.applyState==1 }">
-							<td>通过</td>
-						</c:if>
-					</tr>
-				</c:forEach>
-
-			</table>
-		</div>
+		<div style="width: 1200px; height: 50px; line-height: 50px; margin: 0 auto;">
+		<h1 style="position: relative;width: 1100px; float: left;line-height: 50px;">教室申请</h1>
+		<h3 id="addApplyClass"><a href="<%=path %>/getApplyClass?page=1">查看申请</a></h3>
+	</div>
 
 		<!-- 提交申请表单 -->
 		<form class="layui-form" action="<%=path%>/saveApplyClass"
@@ -157,7 +95,7 @@
 			</div>
 
 			<div class="layui-form-item">
-				<label class="layui-form-label" style="text-align:center;">地址</label>
+				<label class="layui-form-label" style="text-align:center;">申请教室</label>
 				<div class="layui-input-block">
 					<input type="text" name="applyClassAddress" autocomplete="off"
 						placeholder="必填" class="layui-input">
@@ -168,7 +106,7 @@
 
 
 			<div class="layui-form-item">
-				<label class="layui-form-label" style="text-align:center;">时间</label>
+				<label class="layui-form-label" style="text-align:center;">上课时间</label>
 				<div class="layui-input-block">
 					<input type="text" name="applyTime" class="layui-input" autocomplete="off"
 						placeholder="必填">
@@ -190,8 +128,8 @@
 			<span
 				style="float: right; color: red; margin-top: -40px; margin-right: 18px;">${msg }</span>
 		</form>
-
 	</div>
+	<span id="return"><a href="<%=path%>/index.jsp">返回首页</a></span>
 	<jsp:include page="../foot.jsp"></jsp:include>
 
 </body>

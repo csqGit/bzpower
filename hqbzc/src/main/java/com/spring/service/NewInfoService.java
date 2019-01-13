@@ -17,4 +17,7 @@ public interface NewInfoService {
 	public List<NewType> getNewTypeList();
 	
 	public List<NewInfo> getNewInfoList(int startPosition);
+	
+	public int getPages();
+	
 }

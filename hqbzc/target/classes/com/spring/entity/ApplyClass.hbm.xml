@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.spring.entity">
+	<class name="ApplyClass" table="applyClass">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		
+		<property name="applyName" type="string" column="apply_name" />
+		<property name="applyStudentId" type="string" column="apply_student_id" />
+		<property name="applyCollege" type="string" column="apply_college" />
+		<property name="applyStudentClass" type="string" column="applyStudentClass" />
+		<property name="applyCourse" type="string" column="apply_course" />
+		<property name="applyTime" type="string" column="apply_time" />
+		<property name="applyClassAddress" type="string" column="apply_class_address" />
+		<property name="applyState" type="int" column="apply_state" />
+		
+	</class>
+</hibernate-mapping>

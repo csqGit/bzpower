@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.spring.entity">
+	<class name="ClassSchedule" table="classSchedule">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		
+		<property name="className" type="string" column="className" />
+		<property name="time" type="string" column="time" />
+		<property name="monday" type="string" column="monday" />
+		<property name="tuesday" type="string" column="tudsday" />
+		<property name="wednesday" type="string" column="wednesday" />
+		<property name="thursday" type="string" column="thursday" />
+		<property name="friday" type="string" column="friday" />
+		<property name="saturday" type="string" column="saturday" />
+		<property name="sunday" type="string" column="sunday" />
+		
+	</class>
+</hibernate-mapping>

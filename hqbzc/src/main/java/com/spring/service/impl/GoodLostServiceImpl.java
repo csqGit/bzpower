@@ -12,7 +12,7 @@ import com.spring.service.GoodLostService;
 @Service
 public class GoodLostServiceImpl implements GoodLostService {
 	// 规定每页显示10条
-	private static int maxResult = 8; 
+	private static int maxResult = 10; 
 
 	@Autowired
 	private GoodLostDAO goodLostDAO;

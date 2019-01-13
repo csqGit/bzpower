@@ -33,4 +33,11 @@ public class NewInfoServiceImpl implements NewInfoService{
 		return newInfoDAOImpl.getNewInfoList(start, current);
 	}
 
+	public int getPages() {
+		int count = newInfoDAOImpl.getCount() / current;
+		if(newInfoDAOImpl.getCount() % current != 0)
+			count ++;
+		return count;
+	}
+
 }

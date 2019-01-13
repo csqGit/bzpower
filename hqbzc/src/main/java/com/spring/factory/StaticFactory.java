@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StaticFactory {
-	private static Map<String, Object> newInstance;
+/*	private static Map<String, Object> newInstance;
 	public StaticFactory() {
 		System.out.println("hello world");
 	}
@@ -12,7 +12,7 @@ public class StaticFactory {
 		newInstance = new HashMap<String, Object>();
 		System.out.println(newInstance);
 		System.out.println("222222222222");
-	}
+	}*/
 	
 /*	public static void test() {
 		System.out.println("hello world");

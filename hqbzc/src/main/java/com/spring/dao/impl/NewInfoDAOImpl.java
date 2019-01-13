@@ -65,4 +65,22 @@ public class NewInfoDAOImpl implements NewInfoDAO {
 		return list;
 	}
 
+
+	public int getCount() {
+		Session session = sessionFactory.openSession();
+		String hql = "from NewInfo" ;
+		int count = 0;
+		try {
+			Query query = session.createQuery(hql);
+			List list = query.list();
+			if(list.size() > 0)
+				count = list.size();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return count;
+		}
+		return count;
+	}
+
 }

@@ -12,10 +12,10 @@
 <title>陇东学院后勤管理</title>
 
 <!-- layui的css -->
-<link rel="stylesheet" href="layui/css/layui.css" media="all">
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<script src="layui/layui.js" charset="utf-8"></script>
-<script src="js/index.js" charset="utf-8"></script>
+<link rel="stylesheet" href="<%=path %>/layui/css/layui.css" media="all">
+<script type="text/javascript" src="<%=path %>/js/jquery-3.3.1.min.js"></script>
+<script src="<%=path %>/layui/layui.js" charset="utf-8"></script>
+<script src="<%=path %>/js/index.js" charset="utf-8"></script>
 <style type="text/css">
 .layui-table, .layui-table-view {
 	margin: 0;
@@ -23,7 +23,7 @@
 /*版权*/
 .copy {
 	position:relative;
-	top:80px;
+	/* top:90px; */
 	width: 1200px;
 	height: 100px;
 	padding: 10px;

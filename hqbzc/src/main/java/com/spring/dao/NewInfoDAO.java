@@ -18,5 +18,7 @@ public interface NewInfoDAO {
 	 * 得到新闻类型列表信息
 	 */
 	public List<NewType> getNewTypeList();
+	
+	public int getCount();
 
 }

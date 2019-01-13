@@ -22,7 +22,7 @@ public interface SystemInfoService {
 	public boolean saveApplyClass(ApplyClass applyClass);
 
 	// 得到申请教室信息
-	public List<ApplyClass> getApplyClass();
+	public List<ApplyClass> getApplyClass(int page);
 	
 	//空闲教室查询
 	public List<FreeClass> getFreeClass(int start,  int classId);

@@ -18,117 +18,15 @@
 <script type="text/javascript" src="<%=path%>/js/jquery-3.3.1.min.js"></script>
 <script src="<%=path%>/layui/layui.js" charset="utf-8"></script>
 <link rel="stylesheet" href="<%=path%>/css/public.css" type="text/css">
-<style type="text/css">
-* {
-	position: relative;
-}
-body{
-	background: rgb(234, 234, 234);
-}
-
-.btn {
-	width: 70px;
-	height: 40px;
-	margin-left: 20px;
-	float: left;
-}
-
-#button {
-	width: 200px;
-	height: 50px;
-	margin-left: 25%;
-}
-
-.layui-form {
-	position: relative;
-	top: 90px;
-	width: 500px;
-	height: 490px;
-	margin: 0 auto;
-	padding: 10px;
-	background:white;
-	border: 1px solid rgb(234, 234, 234);
-}
-
-.info {
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
-	font-size: 20px;
-	color: white;
-	text-align: center;
-	background: #8babf1;
-}
-
-.layui-btn {
-	background-color: #8babf1;
-}
-
-/*版权*/
-.copy {
-	position: relative;
-	top: 70px;
-	width: 1200px;
-	height: 100px;
-	padding: 10px;
-	background: white;
-	margin: 0 auto;
-}
-
-.copy p {
-	width: 800px;
-	height: 33px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-#test1 {
-	position: relative;
-	top: 0;
-	width: 390px;
-	height: 50px;
-}
-
-#return{
-	position: fixed;
-	top:90px;
-	right:10%;
-	display:block;
-	width:100px;
-	height:30px;
-	margin:0 auto;
-	padding:10px;
-	clear:both;
-}
-#msg{
-	position:relative;
-	top:-40px;
-	left:170px;
-	width:100px;
-	height:30px;
-	display:block;
-	margin:0 auto;
-}
-
-</style>
-
+<link rel="stylesheet" href="<%=path%>/css/page/hqgzbx.css" type="text/css">
 </head>
 <body>
 	<!-- head start -->
-	<div class="head">
-		<img alt="" src="<%=path%>/images/u19.png" class="head-img" /><span
-			id="logo">陇东学院后勤保障处</span>
-		<ul class="head-li">
-			<li><a href="http://www.ldxy.edu">学校首页</a></li>
-			<li><a href="">新闻通知</a></li>
-			<li><a href="">全部功能</a></li>
-			<li><a href="">智慧后勤</a></li>
-			<li><a href="">关于我们</a></li>
-		</ul>
-	</div>
+	<jsp:include page="../top.jsp"></jsp:include>
+	
 	<!-- head end -->
 	
-	<form class="layui-form" id="form" action="<%=path %>/saveRepairInfo" method="post">
+	<form class="layui-form" id="form" action="" method="post">
 		<p class="info">请填写以下信息</p>
 
 		<div class="layui-form-item">
@@ -138,7 +36,7 @@ body{
 		<div class="layui-form-item">
 			<label class="layui-form-label">报修人姓名</label>
 			<div class="layui-input-block">
-				<input type="text" name="repair_name" lay-verify="name"
+				<input id="repair_name" type="text" name="repair_name" lay-verify="name"
 					autocomplete="off" placeholder="报修人姓名" class="layui-input">
 			</div>
 		</div>
@@ -146,7 +44,7 @@ body{
 		<div class="layui-form-item">
 			<label class="layui-form-label">报修类型</label>
 			<div class="layui-input-block">
-				<input type="text" name="repair_type" lay-verify="gender"
+				<input id="repair_type" type="text" name="repair_type" lay-verify="gender"
 					autocomplete="off" placeholder="报修类型" class="layui-input">
 			</div>
 		</div>
@@ -162,7 +60,7 @@ body{
 		<div class="layui-form-item">
 			<label class="layui-form-label">报修地址</label>
 			<div class="layui-input-block">
-				<input type="text" name="repair_address" lay-verify="gender"
+				<input id="repair_address" type="text" name="repair_address" lay-verify="gender"
 					autocomplete="off" placeholder="报修地址" class="layui-input">
 			</div>
 		</div>
@@ -170,7 +68,7 @@ body{
 		<div class="layui-form-item layui-form-text">
 			<label class="layui-form-label">报修内容</label>
 			<div class="layui-input-block">
-				<textarea name="content" placeholder="请输入报修原因"
+				<textarea id="content" name="content" placeholder="请输入报修原因"
 					class="layui-textarea"></textarea>
 			</div>
 		</div>
@@ -178,7 +76,7 @@ body{
 		<div id="button">
 			<div class="btn">
 				<div class="layui-form-item">
-					<button class="layui-btn" lay-submit="" lay-filter="demo2" onclick="submit()">提交</button>
+					<button id="submit" class="layui-btn" lay-submit="" lay-filter="demo2">提交</button>
 				</div>
 			</div>
 			<div class="btn">
@@ -187,19 +85,45 @@ body{
 				</div>
 			</div>
 		</div>
+<span id="msg"> <c:if test="${msg!=null }">${msg }</c:if></span>
 	</form>
-	<a href="<%=path%>/index.jsp" id="return">返回首页</a>
+	<div id="return"><a href="<%=path%>/index.jsp" id="return">返回首页</a></div>
 	
-<span id="msg"><c:if test="${msg!=null }">${msg }</c:if></span>
 	<!-- 版权 -->
-	<div class="copy">
-		<p></p>
-		<p>陇东学院所有</p>
-		<p></p>
-	</div>
-
-
+	<jsp:include page="../foot.jsp"></jsp:include>
 	<script>
+	
+	$(function(){
+		$("#submit").click(function(){
+			var repair_name = $("#repair_name").val();
+			var repair_type = $("#repair_type").val();
+			var time = $("#test1").val();
+			var address = $("#repair_address").val();
+			var content = $("#content").val();
+			if(repair_name == ''){
+				alert("报修人姓名不能为空");
+				return false;
+			}
+			if(repair_type == ''){
+				alert("报修类型不能为空");
+				return false;
+			}
+			if(time == ''){
+				alert("报修时间不能为空");
+				return false;
+			}
+			if(address == ''){
+				alert("报修地点不能为空");
+				return false;
+			}
+			if(content == ''){
+				alert("报修内容不能为空");
+				return false;
+			}
+			$("#form").attr("action", "../saveRepairInfo");
+			$("#form").submit();
+		});
+	})
 	layui.use('laydate', function(){
 		  var laydate = layui.laydate;
 		  

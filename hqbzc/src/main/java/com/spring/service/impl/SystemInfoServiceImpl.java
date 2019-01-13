@@ -16,6 +16,8 @@ import com.spring.service.SystemInfoService;
 
 @Service
 public class SystemInfoServiceImpl implements SystemInfoService{
+	
+	private static int current = 10;
 
 	@Autowired
 	private SystemInfoDAO systemInfoDAO;
@@ -45,9 +47,10 @@ public class SystemInfoServiceImpl implements SystemInfoService{
 		return systemInfoDAO.getPicUrl(pictureInfo);
 	}
 
-	public List<ApplyClass> getApplyClass() {
-		ApplyClass applyClass = new ApplyClass();
-		return systemInfoDAO.getApplyClass(applyClass);
+	public List<ApplyClass> getApplyClass(int page) {
+		int startPage = (page - 1) * current;
+		int maxPage = current;
+		return systemInfoDAO.getApplyClass(startPage, maxPage);
 	}
 
 	public boolean saveApplyClass(ApplyClass applyClass) {

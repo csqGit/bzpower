@@ -14,14 +14,22 @@ public class RepairInfoServiceImpl implements RepairInfoService{
 
 	@Autowired
 	private RepairInfoDAO repairInfoDAO;
+	private static int current = 5;
 	
 	
-	public List<RepairInfo> getRepairInfo(int page, int maxResult) {
-		int start = (page - 1) * maxResult;
+	public List<RepairInfo> getRepairInfo(int page) {
+		int start = (page - 1) * current;
 		
-		return repairInfoDAO.getRepairInfo(start, maxResult);
+		return repairInfoDAO.getRepairInfo(start, current);
 	}
 
+	public int getPages() {
+		int count = getCount();
+		int pages = count / current;
+		if(count % current != 0)
+			pages ++;
+		return pages;
+	}
 
 	public int getCount() {
 		

@@ -93,8 +93,19 @@ public class SystemInfoDAOImpl implements SystemInfoDAO {
 		return true;
 	}
 
-	public List<ApplyClass> getApplyClass(ApplyClass applyClass) {
-		List<ApplyClass> list = (List<ApplyClass>) getInfo(applyClass, arr);
+	public List<ApplyClass> getApplyClass(int startPage, int maxPage) {
+		Session session = sessionFactory.openSession();
+		String hql = "from ApplyClass";
+		List<ApplyClass> list = null;
+		try {
+			Query query = session.createQuery(hql);
+			query.setFirstResult(startPage);
+			query.setMaxResults(maxPage);
+			list = query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 		return list;
 	}
 

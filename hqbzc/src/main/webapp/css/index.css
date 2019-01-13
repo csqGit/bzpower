@@ -89,7 +89,7 @@ a {
 
 .new {
 	width: 1200px;
-	height: 405px;
+	height: 300px;
 	margin: 0 auto;
 }
 
@@ -117,11 +117,13 @@ a {
 
 .new-left {
 	width: 370px;
-	height: 355px;
+	height: 260px;
 	margin-top: 10px;
 	border: 1px solid rgb(234, 234, 234);
 	float: left;
 }
+
+
 
 .new-left-one {
 	height: 220px;
@@ -129,17 +131,17 @@ a {
 }
 
 .new-left-two {
-	height: 75px;
+	height: 40px;
 	background: #ebebeb;
 }
 
-.new-left-three {
+/* .new-left-three {
 	height: 60px;
 	background: rgb(251, 251, 251);
 	margin-top: 5px;
 	margin: 0 auto;
 }
-
+ */
 .more-new {
 	position: relative;
 	top: 10px;
@@ -164,8 +166,8 @@ a {
 
 .new-right {
 	width: 800px;
-	height: 355px;
-	border: 1px solid rgb(234, 234, 234);
+	height: 260px;
+	/* border: 1px solid rgb(234, 234, 234); */
 	margin-top: 10px;
 	float: right;
 }
@@ -174,8 +176,9 @@ a {
 /*repair start*/
 .repair {
 	width: 1200px;
-	height: 610px;
+	height: 620px;
 	margin: 0 auto;
+	clear:both;
 }
 
 .repair-left {
@@ -279,14 +282,14 @@ a {
 
 .repair-but-three {
 	width: 370px;
-	height: 50px;
+	height: 60px;
 	background: rgb(251, 251, 251);
 	margin: 0 auto;
 }
 
 .more-repair {
 	position: relative;
-	top: 8px;
+	top: 15px;
 	display: block;
 	width: 100px;
 	height: 30px;
@@ -307,7 +310,7 @@ a {
 
 .repair-but-right {
 	width: 800px;
-	border-left: 1px solid rgb(234, 234, 234);
+	/* border-left: 1px solid rgb(234, 234, 234); */
 	float: right;
 }
 
@@ -453,4 +456,99 @@ a {
 	margin: 0 auto;
 	text-align: center;
 	color: gray;
+}s
+.layui-table, .layui-table-view {
+	margin: 0;
+}
+
+#igs {
+	margin: 10px auto;
+	width: 1200px;
+	height: 300px;
+	position: relative;
+	top: 80px;
+}
+
+.ig {
+	position: absolute;
+}
+
+.ig img {
+	width: 1200px;
+	height: 300px;
+}
+
+#tabs {
+	position: absolute;
+	list-style: none;
+	background-color: rgba(255, 255, 255, .5);
+	left: 550px;
+	bottom: 10px;
+	border-radius: 10px;
+	padding: 5px 0 5px 5px;
+}
+
+.tab {
+	float: left;
+	text-align: center;
+	line-height: 20px;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	overflow: hidden;
+	margin-right: 6px;
+	border-radius: 100%;
+	background-color: rgb(200, 100, 150);
+}
+
+.btn {
+	position: absolute;
+	color: #fff;
+	top: 110px;
+	width: 40px;
+	height: 100px;
+	background-color: rgba(255, 255, 255, .3);
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 100px;
+	border-radius: 5px;
+	margin: 0 5px;
+}
+
+.btn2 {
+	position: absolute;
+	right: 0px;
+}
+
+.btn:hover {
+	background-color: rgba(0, 0, 0, .7);
+}
+table tr{
+	text-align: center;
+	height: 35px;
+}
+#newTab, #repairTab{
+	border: none;
+}
+.page{
+	position: relative;
+	top: 0px;
+	width: 620px;
+	height: 35px;
+	margin: 5px auto;
+}
+.page li{
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	border: 1px solid rgb(242, 242, 242);
+	float: left;
+}
+.page li span{
+	display: block;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
 }

@@ -28,7 +28,7 @@ public interface SystemInfoDAO {
 	public boolean saveApplyClass(ApplyClass applyClass);
 	
 	//申请教室信息查询
-	public List<ApplyClass> getApplyClass(ApplyClass applyClass);
+	public List<ApplyClass> getApplyClass(int startPage, int maxPage);
 	
 	//教室状态查询
 	public List<FreeClass> getFreeClass(int start, int maxResult, int classId);

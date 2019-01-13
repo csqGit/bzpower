@@ -28,16 +28,19 @@ public class NewInfoController {
 	 */
 	@RequestMapping("getNewInfoList")
 	@ResponseBody
-	public List<NewInfo> getNewInfoList(HttpServletRequest request, int page){
+	public NewPojo getNewInfoList(int page){
 		List<NewInfo> list = null;
+		NewPojo pojo = new NewPojo();
 		try {
 			list = newInfoService.getNewInfoList(page);
-			System.out.println(list);
-			request.getSession().setAttribute("newInfo", list);
+			//得到页数
+			int pages = newInfoService.getPages();
+			pojo.setList(list);
+			pojo.setCurrentPage(page);
+			pojo.setPages(pages);
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 		}
-		return list;
+		return pojo;
 	}
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.spring.entity">
+	<class name="GoodLost" table="GoodLost">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		
+		<property name="name" type="string" column="name" />
+		<property name="type" type="string" column="type" />
+		<property name="lostTime" type="string" column="lostTime" />
+		<property name="returnTime" type="string" column="returnTime" />
+		<property name="getPerson" type="string" column="getPerson" />
+		<property name="contact" type="string" column="contact" />
+		<property name="state" type="int" column="state" />
+		
+	</class>
+</hibernate-mapping>
